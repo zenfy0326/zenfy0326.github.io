@@ -1,0 +1,710 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>C++笔记 | 上世纪國男</title><meta name="author" content="zenfy"><meta name="copyright" content="zenfy"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="C++笔记-上世纪國男笔记 C与C++的区别** (一) 命名空间  基本语法  12345678910111213&#x2F;&#x2F;空间名namespace  标识符&#123;	&#x2F;&#x2F;变量    &#x2F;&#x2F;函数    &#x2F;&#x2F;结构体    &#x2F;&#x2F;类&#125;namespace MM&#123;	int age;    char name[20];&#125;   如何访问空间中的东西： 空间名::空间中的成员  123">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++笔记">
+<meta property="og:url" content="http://example.com/2024/06/15/C/index.html">
+<meta property="og:site_name" content="上世纪國男">
+<meta property="og:description" content="C++笔记-上世纪國男笔记 C与C++的区别** (一) 命名空间  基本语法  12345678910111213&#x2F;&#x2F;空间名namespace  标识符&#123;	&#x2F;&#x2F;变量    &#x2F;&#x2F;函数    &#x2F;&#x2F;结构体    &#x2F;&#x2F;类&#125;namespace MM&#123;	int age;    char name[20];&#125;   如何访问空间中的东西： 空间名::空间中的成员  123">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://picture.gptkong.com/20240618/16527145e5c86d419092d0637b2069c668.png">
+<meta property="article:published_time" content="2024-06-15T03:01:31.000Z">
+<meta property="article:modified_time" content="2024-06-23T03:07:10.711Z">
+<meta property="article:author" content="zenfy">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://picture.gptkong.com/20240618/16527145e5c86d419092d0637b2069c668.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2024/06/15/C/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":2,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'C++笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-23 11:07:10'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://picture.gptkong.com/20240618/16527145e5c86d419092d0637b2069c668.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐推荐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影推荐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 自我介绍</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://picture.gptkong.com/20240616/175612b05166054e8084a654b2ecb19244.png')"><nav id="nav"><span id="blog-info"><a href="/" title="上世纪國男"><span class="site-name">上世纪國男</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐推荐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影推荐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 自我介绍</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">C++笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-15T03:01:31.000Z" title="发表于 2024-06-15 11:01:31">2024-06-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-06-23T03:07:10.711Z" title="更新于 2024-06-23 11:07:10">2024-06-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C/">C++</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h5 id="C-笔记-上世纪國男"><a href="#C-笔记-上世纪國男" class="headerlink" title="C++笔记-上世纪國男"></a>C++笔记-上世纪國男</h5><p>笔记</p>
+<h5 id="C与C-的区别-一"><a href="#C与C-的区别-一" class="headerlink" title="C与C++的区别** (一)"></a>C与C++的区别** (一)</h5><ul>
+<li><p>命名空间</p>
+<ul>
+<li>基本语法</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//空间名</span></span><br><span class="line"><span class="keyword">namespace</span>  标识符</span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//变量</span></span><br><span class="line">    <span class="comment">//函数</span></span><br><span class="line">    <span class="comment">//结构体</span></span><br><span class="line">    <span class="comment">//类</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">namespace</span> MM</span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">    <span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>如何访问空间中的东西： 空间名::空间中的成员</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基本访问方式</span></span><br><span class="line"><span class="comment">//相对于C语言来说，需要一个前缀</span></span><br><span class="line"><span class="comment">//::  作用域分辨符</span></span><br><span class="line">MM::age=<span class="number">1001</span>;</span><br><span class="line"><span class="built_in">strcpy</span>(MM::name,<span class="string">&quot;灰姑凉&quot;</span>);</span><br><span class="line"><span class="comment">//省略前缀</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> 空间名;    <span class="comment">//省略当前这个空间名</span></span><br></pre></td></tr></table></figure>
+
+<p>使用using 语法注意点是: 防止空间变量或者函数不要和空间外的变量或者函数名字相同</p>
+<ul>
+<li>命名空间的嵌套</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> A</span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> num;</span><br><span class="line">	<span class="keyword">namespace</span> B</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> age;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//如何访问: 剥洋葱</span></span><br><span class="line">A::num=<span class="number">1001</span>;</span><br><span class="line">A::B::age=<span class="number">18</span>;</span><br><span class="line"><span class="comment">//省略前缀</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> A;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> A::B;</span><br><span class="line">num=<span class="number">1991</span>;</span><br><span class="line">age=<span class="number">1992</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C++最简单的程序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>头文件的改变<ul>
+<li>标准输入输出头文件: #include <iostream></li>
+<li>包含C语言的文件： #include <cxxx> 当然用#include &lt;xxx.h&gt;</li>
+<li>自己写的头文件还是用C语言的方式包含  #include ”myhead.h“</li>
+</ul>
+</li>
+<li>基本输出的改变： cout 加上&lt;&lt;<ul>
+<li>不再需要格式控制字符</li>
+<li>依然支持转移字符</li>
+<li>换行： endl替换\n</li>
+</ul>
+</li>
+<li>基本输入的改变： cin 加上&gt;&gt;<ul>
+<li>不再不需要格式空字符</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testPrint</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> age=<span class="number">1</span>;</span><br><span class="line">	<span class="type">char</span> name[<span class="number">20</span>]=<span class="string">&quot;老babay&quot;</span>;</span><br><span class="line">	<span class="type">double</span> dNum=<span class="number">1.1</span>;</span><br><span class="line">	std::cout &lt;&lt; age &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	std::cout &lt;&lt; age &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; name &lt;&lt; <span class="string">&quot;\t\t&quot;</span> &lt;&lt; dNum &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	<span class="keyword">using</span> <span class="keyword">namespace</span> std;			<span class="comment">//一般情况这句话会写头文件下面</span></span><br><span class="line">	cout &lt;&lt; age &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; name &lt;&lt; <span class="string">&quot;\t\t&quot;</span> &lt;&lt; dNum &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">	cout &lt;&lt; age &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; name &lt;&lt; <span class="string">&quot;\t\t&quot;</span> &lt;&lt; dNum &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//cout.put(&#x27;A&#x27;);  IO流中讲</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testInput</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">	<span class="type">int</span> num;</span><br><span class="line">	<span class="comment">//单个数据输入</span></span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;请输入一个整数:&quot;</span>;</span><br><span class="line">	std::cin &gt;&gt; age;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;请输入name,age,num:&quot;</span>;</span><br><span class="line">	std::cin &gt;&gt; name &gt;&gt; age &gt;&gt; num;</span><br><span class="line">	std::cout &lt;&lt; name &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; age &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; num &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">testPrint</span>();</span><br><span class="line">	<span class="built_in">testInput</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C++数据类型的改变</p>
+<ul>
+<li>空指针的改变: NULL  改为nullptr</li>
+<li>bool类型引入<ul>
+<li>赋值为: true ,false</li>
+<li>非零值非空值表示成立，只有0和空表示不成立</li>
+<li>bool占用字节数是1</li>
+<li>打印结果只有两个值: true:1 false: 0</li>
+<li>一般条件表达式或者逻辑表达式，或者充当开关变量，标记变量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>引用类型： C++极其重要的类型</p>
+<ul>
+<li>基本用法: 起别名</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">类型&amp; 标识符<span class="number">1</span>=标识符<span class="number">2</span></span><br><span class="line"><span class="comment">//标识符2有一个别名字的叫做标识符1， 他们是一个东西</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>常引用： 给常量起别名</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">const</span> 类型&amp; 标识符=常量;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>右值引用: 给右值起别名</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类型&amp;&amp; 标识符=右值</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>引用的用法<ul>
+<li>当做函数参数:防止拷贝本的产生</li>
+<li>当做函数返回值： 增加左值使用用法(等效返回值一个变量)</li>
+</ul>
+</li>
+<li>自动推断类型： auto类型</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">empty</span><span class="params">(<span class="type">int</span> size)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> size == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Reference types 引用类型</span></span><br><span class="line"><span class="function"><span class="type">int</span>  <span class="title">returnValue</span><span class="params">(<span class="type">int</span> num)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> num = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">int</span>&amp; <span class="title">returnValueReference</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> num;			<span class="comment">//warning C4172: 返回局部变量或临时变量的地址: num</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">SwapC</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span>  <span class="comment">//int a=实参1  int b=实参2</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> temp = a;</span><br><span class="line">	a = b;</span><br><span class="line">	b = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">SwapCpp</span><span class="params">(<span class="type">int</span>&amp; a, <span class="type">int</span>&amp; b)</span> <span class="comment">//int &amp;a =实参1 ，int &amp;b=实参2</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//以后想要在子函数中修改什么，传入相应的引用</span></span><br><span class="line">	<span class="type">int</span> temp = a;</span><br><span class="line">	a = b;</span><br><span class="line">	b = temp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">modify</span><span class="params">(<span class="type">int</span>* &amp;p)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	p = &amp;num;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//const在C++上面更为严格，类型需要严重性的一致</span></span><br><span class="line"><span class="comment">//如果你想要既可以传入常量也可以传入变量，需要const修饰</span></span><br><span class="line"><span class="function"><span class="type">void</span>  <span class="title">printConstValue</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* str)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; str &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//只需要传入常量</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printOnlyConstValue</span><span class="params">(<span class="type">int</span>&amp;&amp; num)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; num &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testReferenceTypes</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//3.1 基本用法</span></span><br><span class="line">	<span class="type">int</span> a = <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span>&amp; b = a;					<span class="comment">//a就是b b就是a</span></span><br><span class="line">	b = <span class="number">100</span>;</span><br><span class="line">	cout &lt;&lt; a &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//int&amp; constNum = 12;		//常量的引用，这样是错误的 </span></span><br><span class="line">	<span class="type">const</span> <span class="type">int</span>&amp; constNum = <span class="number">12</span>;</span><br><span class="line">	<span class="comment">//右值引用也可以表示常量</span></span><br><span class="line">	<span class="type">int</span>&amp;&amp; rightValue = <span class="number">1001</span>;</span><br><span class="line">	<span class="comment">//3.2 引用的用法</span></span><br><span class="line">	<span class="comment">//充当函数参数：防止拷贝本产生</span></span><br><span class="line">	<span class="comment">//当做函数返回值: 增加左值使用  不能返回局部变量引用</span></span><br><span class="line">	<span class="comment">//返回值是一个值</span></span><br><span class="line">	<span class="comment">//returnValue(num) = 12;		//错误</span></span><br><span class="line">	<span class="comment">//1 = 2;</span></span><br><span class="line">	<span class="built_in">returnValueReference</span>() = <span class="number">1111</span>;</span><br><span class="line">	cout &lt;&lt; num &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//充当函数</span></span><br><span class="line">	<span class="type">int</span> aa = <span class="number">1</span>;</span><br><span class="line">	<span class="type">int</span> bb = <span class="number">2</span>;</span><br><span class="line">	<span class="built_in">SwapC</span>(aa, bb);</span><br><span class="line">	cout &lt;&lt; aa &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; bb &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">SwapCpp</span>(aa, bb);  <span class="comment">//注意不需要取地址传参</span></span><br><span class="line">	cout &lt;&lt; aa &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; bb &lt;&lt; endl;</span><br><span class="line">	<span class="type">int</span>* p = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="built_in">modify</span>(p);</span><br><span class="line">	cout &lt;&lt; *p &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//常引用传参</span></span><br><span class="line">	<span class="built_in">printConstValue</span>(<span class="string">&quot;ILoveyou&quot;</span>);</span><br><span class="line">	<span class="comment">//右值引用当做函数参数，只能传入右值</span></span><br><span class="line">	<span class="built_in">printOnlyConstValue</span>(<span class="number">1212</span>);</span><br><span class="line">	<span class="comment">//move可以把左值变成右值</span></span><br><span class="line">	<span class="built_in">printOnlyConstValue</span>(<span class="built_in">move</span>(num));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//auto类型</span></span><br><span class="line"><span class="function"><span class="type">int</span>  <span class="title">Max</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a &gt; b ? a : b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printMax</span><span class="params">(<span class="type">int</span>(*p)(<span class="type">int</span>, <span class="type">int</span>), <span class="type">int</span> a, <span class="type">int</span> b)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="built_in">p</span>(a, b) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testAuto</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//5.1 不能单独定义变量</span></span><br><span class="line">	<span class="comment">//auto a;  错误</span></span><br><span class="line">	<span class="comment">//5.2 auto一般结合赋值使用</span></span><br><span class="line">	<span class="keyword">auto</span> intNum = <span class="number">1</span>;</span><br><span class="line">	cout &lt;&lt; intNum &lt;&lt; endl;   <span class="comment">//int</span></span><br><span class="line">	<span class="built_in">int</span> (*pMax)(<span class="type">int</span>, <span class="type">int</span>) = Max;</span><br><span class="line">	<span class="keyword">auto</span> ppMax = Max;</span><br><span class="line">	cout &lt;&lt; <span class="built_in">ppMax</span>(<span class="number">1</span>, <span class="number">2</span>) &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">auto</span> pp = printMax;</span><br><span class="line">	<span class="built_in">pp</span>(ppMax, <span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//1.基本数据类型的改变</span></span><br><span class="line">	<span class="type">int</span>* p = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="comment">//2.bool类型引入</span></span><br><span class="line">	<span class="type">bool</span> bNum = <span class="literal">true</span>;		<span class="comment">//正常赋值,用true和false</span></span><br><span class="line">	<span class="comment">//非正常的赋值</span></span><br><span class="line">	bNum = <span class="number">-111</span>;</span><br><span class="line">	cout &lt;&lt; bNum &lt;&lt; endl;	<span class="comment">//1</span></span><br><span class="line">	<span class="comment">//3.引用类型</span></span><br><span class="line">	<span class="built_in">testReferenceTypes</span>();</span><br><span class="line">	<span class="comment">//4. :: 作用分辨符</span></span><br><span class="line">	<span class="comment">//就近原则</span></span><br><span class="line">	<span class="type">int</span> num = <span class="number">100000</span>;</span><br><span class="line">	cout &lt;&lt; num &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; ::num &lt;&lt; endl;		<span class="comment">//代表是全局区变量</span></span><br><span class="line">	<span class="comment">//5.自动推断类型</span></span><br><span class="line">	<span class="built_in">testAuto</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C++函数的改变 </p>
+<ul>
+<li><p>内联思想： 函数以二进制形式存在，去提高效率</p>
+<ul>
+<li>内联函数：用inline修饰的函数</li>
+<li>短小精悍</li>
+<li>在结构体中或者类型实现的函数，默认为内联</li>
+</ul>
+</li>
+<li><p>重载思想： C++允许同名不同参的函数存在</p>
+<ul>
+<li>参数个数不同</li>
+<li>参数类型不同</li>
+<li>参数顺序不同(建立在存在不同类型)</li>
+<li>常属性的成员函数和类中的普通函数重载  (类中会讲)</li>
+</ul>
+</li>
+<li><p>缺省思想： 给函数形参初始化，达到不同形态的函数调用</p>
+<ul>
+<li>缺省的顺序 必须是从右往左，连续缺省</li>
+<li>缺省时候，要避免存在普通函数，防止存在二义性</li>
+</ul>
+</li>
+<li><p>Lambda表达式： 函数的定义 并且返回一个函数指针，所以一般在C++中会结合auto使用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[捕获方式](函数参数)能否修改 是否存在异常-&gt;函数返回值类型&#123;函数体;&#125;;</span><br><span class="line">捕获方式: 理解使用函数外面的变量的方式</span><br><span class="line"><span class="number">1.</span>[]</span><br><span class="line"><span class="number">2.</span>[=] </span><br><span class="line"><span class="number">3.</span>[&amp;]</span><br><span class="line"><span class="number">4.</span>[&amp;x,=]</span><br><span class="line"><span class="number">5.</span>[<span class="keyword">this</span>]  类中数据成员的捕获</span><br><span class="line">函数参数： 自己写函数的时候的函数参数</span><br><span class="line">能否修改: <span class="keyword">mutable</span></span><br><span class="line">是否存在异常: <span class="built_in">throw</span>() 不存在异常</span><br><span class="line">函数返回值类型:自己写函数的时候的函数返回值</span><br><span class="line">函数体： 原来函数的函数体</span><br><span class="line"><span class="comment">//注意点： 一般在用的时候，能否修改 是否存在异常-&gt;函数返回值类型 是可以省略</span></span><br><span class="line">[捕获方式](函数参数)&#123;函数体;&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">Max</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a &gt; b ? a : b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//1.参数的数目不同</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b, <span class="type">int</span> c)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; a + b + c &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; a + b &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//2.参数的类型不同</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">char</span> a, <span class="type">char</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; a + b &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//3.顺序不同</span></span><br><span class="line"><span class="comment">//错误，不可以跟上面函数构成重载</span></span><br><span class="line"><span class="comment">//void print(char b, char a) </span></span><br><span class="line"><span class="comment">//&#123;</span></span><br><span class="line"><span class="comment">//	cout &lt;&lt; a + b &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">int</span> age, <span class="type">double</span> num)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; age &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; num &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">(<span class="type">double</span> num, <span class="type">int</span> age)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; age &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; num &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//const属性不构成重载</span></span><br><span class="line"><span class="comment">//void print(int a) </span></span><br><span class="line"><span class="comment">//&#123;</span></span><br><span class="line"><span class="comment">//	cout &lt;&lt; a &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"><span class="comment">//void print(const int a) </span></span><br><span class="line"><span class="comment">//&#123;</span></span><br><span class="line"><span class="comment">//	cout &lt;&lt; a &lt;&lt; endl;</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"><span class="comment">//4.缺省:不传入参数使用默认参数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printValue</span><span class="params">(<span class="type">int</span> a=<span class="number">1</span>, <span class="type">int</span> b=<span class="number">2</span>, <span class="type">int</span> c=<span class="number">3</span>,<span class="type">int</span> d=<span class="number">4</span>)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; a + b + c + d &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//5.Lambda表达</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printMax</span><span class="params">(<span class="type">int</span>(*p)(<span class="type">int</span>, <span class="type">int</span>), <span class="type">int</span> a, <span class="type">int</span> b)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="built_in">p</span>(a, b) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testLambda</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//最完整的Lambda表达式</span></span><br><span class="line">	<span class="comment">//int Max(int a, int b) </span></span><br><span class="line">	<span class="built_in">int</span>(*pMax)(<span class="type">int</span>, <span class="type">int</span>) = [](<span class="type">int</span> a, <span class="type">int</span> b)<span class="keyword">mutable</span> <span class="built_in">throw</span>()-&gt;<span class="type">int</span> &#123;<span class="keyword">return</span> a &gt; b ? a : b; &#125;;</span><br><span class="line">	<span class="comment">//一般用的时候，怎么简单怎么来，结合auto+省略的Lambda表达式去使用</span></span><br><span class="line">	<span class="keyword">auto</span> p= [](<span class="type">int</span> a, <span class="type">int</span> b)&#123;<span class="keyword">return</span> a &gt; b ? a : b; &#125;;</span><br><span class="line">	cout &lt;&lt; <span class="built_in">p</span>(<span class="number">1</span>, <span class="number">2</span>) &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//进阶一下： 函数的定义和调用写在一起</span></span><br><span class="line">	cout &lt;&lt; [](<span class="type">int</span> a, <span class="type">int</span> b) &#123;<span class="keyword">return</span> a &gt; b ? a : b; &#125;(<span class="number">1</span>, <span class="number">3</span>) &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">printMax</span>([](<span class="type">int</span> a, <span class="type">int</span> b) &#123;<span class="keyword">return</span> a + b; &#125;, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">	<span class="built_in">printMax</span>([](<span class="type">int</span> a, <span class="type">int</span> b) &#123;<span class="keyword">return</span> a - b; &#125;, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">	<span class="comment">//捕获方式</span></span><br><span class="line">	<span class="type">int</span> num = <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//[]() &#123;cout &lt;&lt; num &lt;&lt; endl; &#125;;错误  没有捕获方式，表示没用权力</span></span><br><span class="line">	<span class="keyword">auto</span> p1=[=]() &#123;cout &lt;&lt; num &lt;&lt; endl; &#125;;</span><br><span class="line">	<span class="keyword">auto</span> p2 = [&amp;]() &#123;cout &lt;&lt; num &lt;&lt; endl; &#125;;</span><br><span class="line">	<span class="built_in">p1</span>();					<span class="comment">//打印1</span></span><br><span class="line">	<span class="built_in">p2</span>();</span><br><span class="line">	num = <span class="number">1001</span>;</span><br><span class="line">	<span class="built_in">p1</span>();					<span class="comment">//不会因为值的改变而改变调用  ，打印1</span></span><br><span class="line">	<span class="built_in">p2</span>();</span><br><span class="line">	<span class="comment">//[this] 后面讲了类的时候在讲</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; <span class="built_in">Max</span>(<span class="number">1</span>, <span class="number">2</span>) &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">print</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">	<span class="built_in">print</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;A&#x27;</span>, <span class="string">&#x27;B&#x27;</span>);</span><br><span class="line">	<span class="built_in">print</span>(<span class="number">1</span>, <span class="number">1.1</span>);</span><br><span class="line">	<span class="built_in">print</span>(<span class="number">1.1</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="built_in">printValue</span>();			<span class="comment">//a=1,b=2,c=3,d=4;</span></span><br><span class="line">	<span class="built_in">printValue</span>(<span class="number">11</span>);			<span class="comment">//a=11,b=2,c=3,d=4;</span></span><br><span class="line">	<span class="built_in">printValue</span>(<span class="number">11</span>, <span class="number">22</span>);       <span class="comment">//a=11,b=22,c=3,d=4</span></span><br><span class="line">	<span class="built_in">testLambda</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="C与C-的区别-二）"><a href="#C与C-的区别-二）" class="headerlink" title="C与C++的区别 (二）"></a><strong>C与C++的区别</strong> (二）</h5><ul>
+<li><p>动态申请内存的区别</p>
+<ul>
+<li>C语言中申请内存: realloc malloc calloc  C++中只有new</li>
+<li>C语言释放内存: free   C++中 delete</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;assert.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span>  <span class="comment">//和#include &lt;string&gt;有区别	</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MM</span> </span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testNewMemory</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//1.申请单个变量内存</span></span><br><span class="line">	<span class="type">int</span>* pC = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="type">int</span>));</span><br><span class="line">	<span class="built_in">assert</span>(pC);</span><br><span class="line">	*pC = <span class="number">123</span>;</span><br><span class="line">	<span class="built_in">free</span>(pC);</span><br><span class="line">	pC = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="type">int</span>* cpp = <span class="keyword">new</span> <span class="type">int</span>;</span><br><span class="line">	*cpp = <span class="number">123</span>;</span><br><span class="line">	cout &lt;&lt; *cpp &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">delete</span> cpp;</span><br><span class="line">	cpp = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="comment">//2.申请一段内存   一维数组</span></span><br><span class="line">	<span class="type">int</span>* pcArray = (<span class="type">int</span>*)<span class="built_in">malloc</span>(<span class="built_in">sizeof</span>(<span class="type">int</span>) * <span class="number">3</span>);  <span class="comment">//int pcArray[3];</span></span><br><span class="line">	<span class="built_in">assert</span>(pcArray);</span><br><span class="line">	pcArray[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	cout &lt;&lt; pcArray[<span class="number">0</span>] &lt;&lt; endl;</span><br><span class="line">	<span class="built_in">free</span>(pcArray);</span><br><span class="line">	pcArray = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="type">int</span>* cppArray = <span class="keyword">new</span> <span class="type">int</span>[<span class="number">3</span>];    <span class="comment">//int cppArray[3];</span></span><br><span class="line">	cppArray[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	cout &lt;&lt; cppArray[<span class="number">0</span>] &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">delete</span>[] cppArray;</span><br><span class="line">	cppArray = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="comment">//3.申请内存并做初始化</span></span><br><span class="line">	<span class="comment">//C语言有一个calloc</span></span><br><span class="line">	<span class="comment">//3.1 单个数据用()</span></span><br><span class="line">	<span class="type">int</span>* pNum = <span class="keyword">new</span> <span class="built_in">int</span>(<span class="number">100</span>);      <span class="comment">//*pNum=100</span></span><br><span class="line">	cout &lt;&lt; pNum &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">delete</span> pNum;</span><br><span class="line">	pNum = <span class="literal">nullptr</span>;</span><br><span class="line">	<span class="comment">//3.2 多个数据用&#123;&#125;</span></span><br><span class="line">	<span class="type">int</span>* pArray = <span class="keyword">new</span> <span class="type">int</span>[<span class="number">3</span>]&#123; <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span> &#125;;  <span class="comment">//int pArray[3]=&#123;1,2,3&#125;;</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) </span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; pArray[i] &lt;&lt; <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//C++允许你重新管理申请堆内存</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testReNew</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">char</span>* sum = <span class="keyword">new</span> <span class="type">char</span>[<span class="number">100</span>];</span><br><span class="line">	<span class="comment">//前面十六个字节存放4个整数</span></span><br><span class="line">	<span class="comment">//(sum + 0)代表是从那个位置开始申请</span></span><br><span class="line">	<span class="type">int</span>* pInt = <span class="built_in">new</span>(sum + <span class="number">0</span>) <span class="type">int</span>[<span class="number">4</span>]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line">	<span class="comment">//来10个字节存储字符串</span></span><br><span class="line">	<span class="type">char</span>* pstr = <span class="built_in">new</span>(pInt + <span class="number">4</span>) <span class="type">char</span>[<span class="number">10</span>]&#123;<span class="string">&quot;ILoveyou&quot;</span>&#125;;</span><br><span class="line">	<span class="comment">//等效：char* pstr = new(sum + 16) char[10]&#123;&quot;ILoveyou&quot;&#125;;</span></span><br><span class="line">	cout &lt;&lt; sum + <span class="number">16</span> &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; pstr &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//....</span></span><br><span class="line">	<span class="keyword">delete</span>[] sum;</span><br><span class="line">	sum = <span class="literal">nullptr</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testUserData</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//结构体不需要struct关键字</span></span><br><span class="line">	<span class="comment">//单一结构体也是&#123;&#125;初始化</span></span><br><span class="line">	MM* pMM = <span class="keyword">new</span> MM &#123; <span class="string">&quot;张三&quot;</span>, <span class="number">18</span> &#125;;</span><br><span class="line">	cout &lt;&lt; pMM-&gt;name &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; pMM-&gt;age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">testNewMemory</span>();</span><br><span class="line">	<span class="built_in">testReNew</span>();</span><br><span class="line">	<span class="built_in">testUserData</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C++结构体的基本区别</p>
+<ul>
+<li>类型上： 不在需要struct ，直接结构体名可以充当类型，.c文件必须struct关键字</li>
+<li>访问方式和C语言没区别<ul>
+<li>必须要用结构体变量访问</li>
+<li>变量访问的方式： 变量.成员</li>
+<li>指针表示，访问: 指针-&gt;成员</li>
+</ul>
+</li>
+<li>C++结构体中允许存在函数<ul>
+<li>结构体中的函数如何访问数据：直接访问</li>
+<li>结构体中函数如何在类外实现：函数名必须要用：结构体名::函数名</li>
+<li>通过结构体中的函数去设置结构体数据</li>
+<li>C++结构体申请内存</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MM</span> </span><br><span class="line">&#123;</span><br><span class="line">	<span class="comment">//数据成员</span></span><br><span class="line">	<span class="type">char</span> name[<span class="number">20</span>];</span><br><span class="line">	<span class="type">int</span> age;</span><br><span class="line">	<span class="comment">//成员函数</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span> </span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		cout &lt;&lt; name &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; age &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">printData</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">setData</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* mmName, <span class="type">int</span> mmAge)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">MM::printData</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	cout &lt;&lt; name &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; age &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">MM::setData</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* mmName, <span class="type">int</span> mmAge)</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">strcpy_s</span>(name,<span class="number">20</span>, mmName);    <span class="comment">//&quot;宝宝&quot;</span></span><br><span class="line">	age = mmAge;				  <span class="comment">//19</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testCppStruct</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//1.基本的访问方式</span></span><br><span class="line">	MM mm = &#123; <span class="string">&quot;张三&quot;</span>,<span class="number">19</span> &#125;;</span><br><span class="line">	cout &lt;&lt; mm.name &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; mm.age &lt;&lt; endl;</span><br><span class="line">	MM* pMM = &amp;mm;</span><br><span class="line">	cout &lt;&lt; pMM-&gt;name &lt;&lt; <span class="string">&quot;\t&quot;</span> &lt;&lt; pMM-&gt;age &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//2.C++结构体中的函数的访问</span></span><br><span class="line">	mm.<span class="built_in">print</span>();						<span class="comment">//打印就是mm.name,mm.age</span></span><br><span class="line">	pMM-&gt;<span class="built_in">print</span>();</span><br><span class="line">	MM baby = &#123; <span class="string">&quot;baby&quot;</span>,<span class="number">19</span> &#125;;</span><br><span class="line">	baby.<span class="built_in">print</span>();					<span class="comment">//baby.name, baby.age</span></span><br><span class="line">	baby.<span class="built_in">printData</span>();</span><br><span class="line">	<span class="comment">//3.通过函数去描述行为</span></span><br><span class="line">	MM boy;</span><br><span class="line">	boy.<span class="built_in">setData</span>(<span class="string">&quot;宝宝&quot;</span>, <span class="number">19</span>);			<span class="comment">//boy.name=&quot;宝宝&quot;，boy.age=19</span></span><br><span class="line">	boy.<span class="built_in">print</span>();					<span class="comment">//boy.name ,boy.age</span></span><br><span class="line">	<span class="comment">//4.C++结构体申请内存</span></span><br><span class="line">	<span class="comment">//这种写法是建立在没有构造函数的基础下是对的</span></span><br><span class="line">	MM* p = <span class="keyword">new</span> MM;</span><br><span class="line">	p-&gt;<span class="built_in">setData</span>(<span class="string">&quot;申请内存&quot;</span>, <span class="number">199</span>);</span><br><span class="line">	p-&gt;<span class="built_in">print</span>();</span><br><span class="line">	<span class="keyword">delete</span> p;</span><br><span class="line">	p = <span class="literal">nullptr</span>;</span><br><span class="line">	MM* pArray = <span class="keyword">new</span> MM[<span class="number">3</span>];    </span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) </span><br><span class="line">	&#123;</span><br><span class="line">		pArray[i].<span class="built_in">setData</span>(<span class="string">&quot;数组&quot;</span>, i + <span class="number">19</span>);</span><br><span class="line">		pArray[i].<span class="built_in">print</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">delete</span>[] pArray;</span><br><span class="line">	pArray = <span class="literal">nullptr</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">testCppStruct</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C++中string： 本节课只需要知道如何使用C++string即可，不需要知道为什么这样用</p>
+<ul>
+<li>首先需要知道C++string 是一个类，头文件是#include<string></li>
+<li>如何使用C++string</li>
+<li>string 中的一些函数操作 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/cpp/standard-library/basic-string-class?view=msvc-160">basic_string 类 | Microsoft Docs</a></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testCppString</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//1.常用的创建方式</span></span><br><span class="line">	<span class="comment">//1.1常用的创建方式</span></span><br><span class="line">	string str1;				<span class="comment">//类似创建变量的方式</span></span><br><span class="line">	std::string noStd;			<span class="comment">//没有using namespace std ,也需要加前缀</span></span><br><span class="line">	str1 = <span class="string">&quot;ILoveyou&quot;</span>;</span><br><span class="line">	cout &lt;&lt; str1 &lt;&lt; endl;</span><br><span class="line">	<span class="function">string <span class="title">str2</span><span class="params">(<span class="string">&quot;ILoveyou&quot;</span>)</span></span>;</span><br><span class="line">	cout &lt;&lt; str2 &lt;&lt; endl;</span><br><span class="line">	<span class="function">string <span class="title">str3</span><span class="params">(str2)</span></span>;</span><br><span class="line">	cout &lt;&lt; str3 &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//1.2不常用</span></span><br><span class="line">	<span class="function">string <span class="title">str4</span><span class="params">(<span class="number">5</span>, <span class="string">&#x27;O&#x27;</span>)</span></span>;				<span class="comment">//str4=&quot;OOOOO&quot;;</span></span><br><span class="line">	cout &lt;&lt; str4 &lt;&lt; endl;</span><br><span class="line">	<span class="function">string <span class="title">str5</span><span class="params">(<span class="string">&quot;Iloveyou&quot;</span>, <span class="number">1</span>, <span class="number">5</span>)</span></span>;		<span class="comment">//从0开始，用第一个到第五个字符初始化</span></span><br><span class="line">	cout &lt;&lt; str5 &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//2.基本操作</span></span><br><span class="line">	<span class="comment">//2.1string里面有一个函数可以表示字符串属性</span></span><br><span class="line">	cout &lt;&lt; str5.<span class="built_in">size</span>() &lt;&lt; endl;		<span class="comment">//元素个数</span></span><br><span class="line">	cout &lt;&lt; str5.<span class="built_in">length</span>() &lt;&lt; endl;		<span class="comment">//长度</span></span><br><span class="line">	cout &lt;&lt; str5.<span class="built_in">capacity</span>() &lt;&lt; endl;	<span class="comment">//容量</span></span><br><span class="line">	string  longStr = <span class="string">&quot;12345678910123423&quot;</span>;</span><br><span class="line">	cout &lt;&lt; longStr.<span class="built_in">capacity</span>() &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//2.2 常规操作</span></span><br><span class="line">	<span class="comment">//比较，直接比即可  所有条件运算符直接用</span></span><br><span class="line">	<span class="comment">//运算符重载</span></span><br><span class="line">	cout &lt;&lt; (longStr &gt; str5) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; (longStr == str5) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; (longStr != str5) &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//连接直接用+</span></span><br><span class="line">	string strF = <span class="string">&quot;First&quot;</span>;</span><br><span class="line">	string strS = <span class="string">&quot;Second&quot;</span>;</span><br><span class="line">	string result = strF + strS;</span><br><span class="line">	cout &lt;&lt; result &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//3.string与char* 转换</span></span><br><span class="line">	<span class="comment">//不能用%s方式直接打印string</span></span><br><span class="line">	<span class="comment">//调用string类中两个函数</span></span><br><span class="line">	<span class="comment">//data() ,c_str()</span></span><br><span class="line">	<span class="function">string <span class="title">info</span><span class="params">(<span class="string">&quot;C++中的string&quot;</span>)</span></span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, info.<span class="built_in">c_str</span>());</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, info.<span class="built_in">data</span>());</span><br><span class="line">	<span class="type">char</span> name[<span class="number">20</span>] = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	string strName = <span class="string">&quot;张三&quot;</span>;</span><br><span class="line">	<span class="built_in">strcpy_s</span>(name, <span class="number">20</span>, strName.<span class="built_in">c_str</span>());</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\n&quot;</span>, name);</span><br><span class="line">	<span class="comment">//4.下表法访问string</span></span><br><span class="line">	string pStr = <span class="string">&quot;ILoveyou&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; pStr.<span class="built_in">length</span>(); i++) </span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; pStr.<span class="built_in">at</span>(i);</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt; pStr &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">testCppString</span>();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>C++类型转换 </p>
+<ul>
+<li>基本数据类型转换: 类型(变量)</li>
+<li>static_cast<ul>
+<li>可以用做基本数据类型转换</li>
+<li>把空类型的指针转换为目标指针类型</li>
+<li>不能转换带有const属性指针</li>
+</ul>
+</li>
+<li>const_cast： const属性指针的一些转换操作</li>
+<li>reinterpret_cast：指针转整数，整数转指针</li>
+<li>dynamic_cast    :后续讲完多态在给同学们讲解</li>
+</ul>
+</li>
+</ul>
+<h5 id="作业"><a href="#作业" class="headerlink" title="作业"></a>作业</h5><p>写两个子函数</p>
+<ul>
+<li>第一个子函数，实现二维数组的内存申请</li>
+<li>第二个子函数，实现内存释放</li>
+</ul>
+<h5 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h5><ul>
+<li>类和对象<ul>
+<li>什么是类? 类是一些具有共同属性和行为的事物的抽象</li>
+<li>什么是对象? 类的具体化(实例化)，明确属性和行为</li>
+<li>属性: 数据成员(int，float，char…)描述， 一系列事物公有特征</li>
+<li>行为: 成员函数(类中函数)描述,一系列公有事物共同操作</li>
+</ul>
+</li>
+<li>类的特点<ul>
+<li>封装性</li>
+<li>继承性</li>
+<li>多态性</li>
+<li>抽象性</li>
+<li>隐藏性</li>
+</ul>
+</li>
+<li>学会创建类的语法<ul>
+<li>权限限定词:public,protected,private，在结构体中也是可以使用</li>
+<li>类中默认是private属性，结构体中默认是public属性</li>
+<li>权限限定词作用是用来限定类外对类中数据访问<ul>
+<li>一般情况类外访问类中数据必须通过对象来访问，所以我们写C++程序，做的第一件事是创建对象</li>
+<li>权限限定词是可以多个，或者没有</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> 类名</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:			<span class="comment">//公有</span></span><br><span class="line"><span class="keyword">protected</span>:		<span class="comment">//保护</span></span><br><span class="line"><span class="keyword">private</span>:    	<span class="comment">//私有</span></span><br><span class="line">&#125;;  <span class="comment">//分号必须要有的</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>明白类中的权限问题<ul>
+<li>静态数据成员和静态成员也受权限限定，可以不需要对象也可以调用</li>
+<li>类外只能访问public属性，别的属性都不能被访问，类中没有权限限定</li>
+<li>protected和private 在继承中有区别，目前不需要知道</li>
+</ul>
+</li>
+<li>学会如何访问类中的数据<ul>
+<li>类中数据可以直接初始化</li>
+<li>接口的概念，C++当中一般指是public属性下方法(成员函数)</li>
+<li>两种修改类中数据的方式<ul>
+<li>通过提供一个带参的函数去修改数据成员</li>
+<li>通过返回引用的方式修改数据成员</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>C++各种对象的形式对类中数据的访问<ul>
+<li>普通对象<ul>
+<li>注意权限问题，类外只能访问public属性下内容</li>
+<li>对象用: 对象.成员</li>
+</ul>
+</li>
+<li>对象数组</li>
+<li>对象指针<ul>
+<li>可以用指针指向运算符(-&gt;)访问 ：指针-&gt;成员</li>
+<li>也可以用(*指针).成员</li>
+</ul>
+</li>
+<li>对象本身就是一个数据，所以普通数据能做他都可以做<ul>
+<li>当做函数返回值</li>
+<li>当做函数参数</li>
+<li>当做变量赋值</li>
+</ul>
+</li>
+<li>this指针<ul>
+<li>this指针可以解决形参名和数据成员名字相同的问题</li>
+<li>可以函数充当函数返回值</li>
+</ul>
+</li>
+<li>类的成员函数的表示方式<ul>
+<li>如何定义一个类的成员函数的指针</li>
+<li>如果通过成员函数的函数指针调用函数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="构造函数和析构函数"><a href="#构造函数和析构函数" class="headerlink" title="构造函数和析构函数"></a>构造函数和析构函数</h5><ul>
+<li>构造函数<ul>
+<li>没有返回值</li>
+<li>函数名和类名相同</li>
+<li>构造对象的时候被调用</li>
+<li>构造函数一般情况都是用来数据成员初始化</li>
+<li>一般情况构造函数是public属性</li>
+<li>默认的拷贝构造函数是没有参数，无参构造函数,一旦自己写构造函数，默认的就不存在</li>
+</ul>
+</li>
+<li>拷贝构造函数<ul>
+<li>拷贝构造函数也是构造函数,具有构造函数相同属性</li>
+<li>拷贝构造函数只有一个参数，就是对对象的引用</li>
+<li>拷贝构造主要是为了实现通过一个对象去创建对象</li>
+</ul>
+</li>
+<li>析构函数<ul>
+<li>函数名: ~类名</li>
+<li>析构函数没有参数</li>
+<li>public属性</li>
+<li>不写析构存在一个默认的析构</li>
+<li>析构函数是对象死亡的时候(生命周期结束)，自动调用，不需要人调用</li>
+<li>什么时候需要手动写析构函数，当类中的数据成员做到了内存申请的时候，需要手动写析构函数</li>
+</ul>
+</li>
+<li>深拷贝和浅拷贝： 当数据成员是指针的时候，并做内存申请</li>
+<li>默认的函数的相关操作<ul>
+<li>我们可以删除默认的函数，用delete删除</li>
+<li>我们使用默认的函数，用default函数</li>
+</ul>
+</li>
+</ul>
+<h5 id="C-特殊成员"><a href="#C-特殊成员" class="headerlink" title="C++特殊成员"></a>C++特殊成员</h5><ul>
+<li><p>const成员</p>
+<ul>
+<li><p>常数据成员： const修饰的数据成员</p>
+<ul>
+<li>const属性代表只读(不可以修改)</li>
+<li>常数据成员的初始化必须要采用初始化参数列表</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化参数列表</span></span><br><span class="line">类名(变量<span class="number">1</span>，变量<span class="number">2</span>,...):数据成员<span class="number">1</span>(变量<span class="number">1</span>)，数据成员<span class="number">2</span>(变量<span class="number">2</span>)...&#123;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常成员函数:  const修饰的成员成员函数,注意写法，const是放在函数后面</p>
+<ul>
+<li>在当前常成员函数中不能修改数据成员</li>
+<li>常成员可以和普通同时存在</li>
+</ul>
+</li>
+<li><p>常对象: const 修饰对象</p>
+<ul>
+<li>常对象只能调用常成员函数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>static成员</p>
+<ul>
+<li>static数据成员<ul>
+<li>必须在类外做初始化</li>
+<li>静态数据成员是属于类的，不属于对象，是所有对象共有，也就是说所有对象用的是一个数据</li>
+<li>静态数据成员访问不需要对象，可以直接用类名限定访问: 类名::成员</li>
+<li>静态数据成员也受权限限定</li>
+</ul>
+</li>
+<li>static成员函数<ul>
+<li>访问可以不需要对象，用对象访问也可以的</li>
+<li>也受权限限定</li>
+<li>静态成员函数不能直接访问非静态数据成员,只能通过指定访问</li>
+</ul>
+</li>
+<li>static对象<ul>
+<li>保留上一次运行的结果，初始化操作只做一次</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>类的组合 ：一个类是另一个类一部分</p>
+<ul>
+<li>构造函数的的写法：必须采用初始化参数列表</li>
+<li>构造的顺序(考试)<ul>
+<li>组合类中构造顺序和初始化参数列表写的顺序无关，只和声明顺序有关</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="C-友元"><a href="#C-友元" class="headerlink" title="C++友元"></a>C++友元</h5><ul>
+<li>友元函数：单纯提供一个场所给予类的对象具有无视权限的功能<ul>
+<li>普通函数成为友元： 再类中用friend 声明即可</li>
+<li>以另一个类的成员函数成为友元函数</li>
+</ul>
+</li>
+<li>友元类</li>
+</ul>
+<h5 id="C-类的继承"><a href="#C-类的继承" class="headerlink" title="C++类的继承"></a>C++类的继承</h5><ul>
+<li>继承基本语法</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> 子类名: 继承方式 父类名</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//继承方式: 权限限定词</span></span><br><span class="line"><span class="comment">//public  公有</span></span><br><span class="line"><span class="comment">//protected: 保护</span></span><br><span class="line"><span class="comment">//private: 私有继承</span></span><br><span class="line"><span class="keyword">class</span> 派生类名:继承方式 基类名</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//生成新的属性和行为</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>继承的实质: 父类(基类)当中的属性，子类(派生类)中也有一份，这一份的属性是由继承方式的决定的。</p>
+<ul>
+<li>继承权限问题</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>public</th>
+<th>protected</th>
+<th>private</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>public ：继承</td>
+<td>public</td>
+<td>protected</td>
+<td>不可访问</td>
+</tr>
+<tr>
+<td>protected：继承</td>
+<td>protected</td>
+<td>protected</td>
+<td>不可访问</td>
+</tr>
+<tr>
+<td>private:继承</td>
+<td>private</td>
+<td>private</td>
+<td>不可访问</td>
+</tr>
+</tbody></table>
+<ul>
+<li>继承具有遗传性</li>
+</ul>
+<p>继承的属性是一值存在的，无论被继承多少代，都是存在，所以一般类的击沉不会写太多层数，导致类很冗长。</p>
+<ul>
+<li><p>继承中的构造函数</p>
+<ul>
+<li>子类构造函数必须要调用父类的构造函数</li>
+<li>子类的构造函数必须采用初始化列表的写法去初始化继承下来的属性</li>
+</ul>
+</li>
+<li><p>继承的分类</p>
+<ul>
+<li>单继承：只有一个父类</li>
+<li>多继承: 2个或者以上的父类<ul>
+<li>菱形继承</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>继承中的同名访问问题  &#x2F;&#x2F;21:20继续</p>
+<ul>
+<li>正常赋值的访问：  默认访问方式采用就近原则,当然可以采用类名限定指定的方式</li>
+<li>非正常赋值的访问： 没有virtual看指针类型</li>
+</ul>
+</li>
+<li><p>继承的作用：</p>
+<p>抽象中的抽象。其实大家在使用继承的时候，更多的是继承别人的东西</p>
+<p>自己设计代码采用继承的方式，更多增加代码的重用性</p>
+</li>
+</ul>
+<p>C++继承作业: 抽象画图工具的工具类</p>
+<h5 id="C-虚函数和多态"><a href="#C-虚函数和多态" class="headerlink" title="C++虚函数和多态"></a>C++虚函数和多态</h5><ul>
+<li>虚函数与虚函数表</li>
+<li>纯虚函数和抽象类</li>
+<li>多态</li>
+<li>ADT过程和虚析构函数</li>
+<li>dynamic下行转换和交叉转换  </li>
+<li>类中类的访问</li>
+</ul>
+<h5 id="C-模板"><a href="#C-模板" class="headerlink" title="C++模板"></a>C++模板</h5><ul>
+<li>函数模板</li>
+<li>类模板</li>
+<li>模板特化</li>
+</ul>
+<h5 id="C-可变参模板"><a href="#C-可变参模板" class="headerlink" title="C++可变参模板"></a>C++可变参模板</h5><ul>
+<li>可变参函数模板<ul>
+<li>折叠参数类型的定义 : typename …Arg  </li>
+<li>折叠参数的定义: Arg  …arg;</li>
+<li>如何展开折叠参数<ul>
+<li>递归的方式去展开参数包</li>
+<li>通过列表({}的数据)展开参数包</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>可变参类模板： 类模板用到可变参数<ul>
+<li>继承+模板特化的方式展开</li>
+<li>递归的方式展开参数包</li>
+</ul>
+</li>
+<li>标准库中的可变参模板<ul>
+<li>包含头文件：#include <tuple></li>
+<li>如何创建</li>
+<li>如何获取数据</li>
+<li>其他操作</li>
+</ul>
+</li>
+</ul>
+<h5 id="C-智能指针"><a href="#C-智能指针" class="headerlink" title="C++智能指针"></a>C++智能指针</h5><p>​	智能指针本质就是一个模板类，通过类的对象生命周期的自动结束效果，实现内存的自动释放。也就是把指针当做对象去处理，所以一般不会去new一个智能指针，自己new还是需要自己手动释放，一般都是创建一个智能指针对象，去管理堆区的变量。</p>
+<ul>
+<li>shared_ptr</li>
+<li>weak_ptr</li>
+<li>unique_ptr</li>
+</ul>
+<h5 id="C-类型推断"><a href="#C-类型推断" class="headerlink" title="C++类型推断"></a>C++类型推断</h5><ul>
+<li>auto</li>
+<li>decltype</li>
+</ul>
+<h5 id="C-IO流"><a href="#C-IO流" class="headerlink" title="C++IO流"></a>C++IO流</h5><ul>
+<li>输入输出流</li>
+<li>字符流</li>
+<li>文件流</li>
+</ul>
+<h5 id="C-正则表达式"><a href="#C-正则表达式" class="headerlink" title="C++正则表达式"></a>C++正则表达式</h5><p>正则是一种规则，它用来匹配（进而捕获、替换）字符串。这种规则需要“模式”、“字符串”这两样东西，“模式”根据正则规则，来处理“字符串”。这种规则被许多语言支持，C++11以后才支持正则。</p>
+<h6 id="具有特殊意义的元字符"><a href="#具有特殊意义的元字符" class="headerlink" title="具有特殊意义的元字符"></a>具有特殊意义的元字符</h6><p>\：\字符能够改变字符原本的含义</p>
+<p>^：^字符指示字符串的头，且要求字符串以字符开头，不占位。^表示一个真正的^符号。</p>
+<p>$：$字符指示字符串的尾，且要求字符串以字符结尾，不占位。$表示一个真正的$符号。</p>
+<p>\b：指示字符串的边界（头&#x2F;尾&#x2F;空格左&#x2F;空格右），字符\b要求边界的左边是字符，\b字符要求边界的右边是字符。</p>
+<p>.：表示一个除了\n以外的任意一个字符。\.表示一个真正的.符号。</p>
+<p>|：a|b  a或b之一</p>
+<p>[abc]：abc之中的任意一个</p>
+<p>[^abc]:  abc之外的</p>
+<p>[a-z]:	任意小写字母</p>
+<p>[^a-z]:  除了小写字母之外的</p>
+<p>\w：任意一个字母数字下划线，等价于[(0-9)(a-z)(A-Z)(_)]</p>
+<p>\W：字母数字下划线之外的，等价于[]</p>
+<p>\d:	任意一个数子</p>
+<p>\D:	除了数字之外的</p>
+<p>\s:	空白符（空格、制表符、换页符）</p>
+<h5 id="C-日期时间库"><a href="#C-日期时间库" class="headerlink" title="C++日期时间库"></a>C++日期时间库</h5><ul>
+<li>时间间隔 duration</li>
+<li>时钟 clock()</li>
+<li>时间点 time point</li>
+<li>时间转换</li>
+</ul>
+<h5 id="时间间隔duration"><a href="#时间间隔duration" class="headerlink" title="时间间隔duration"></a>时间间隔duration</h5><p>duration表示一段时间间隔，用来记录时间长度，可以表示几秒、几分钟、几个小时的时间间隔,</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">_Rep</span>, <span class="keyword">class</span> <span class="title class_">_Period</span> = ratio&lt;<span class="number">1</span>&gt;&gt;</span><br><span class="line"><span class="keyword">class</span> duration;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">ratio 代表的是一个分子除以分母的数值</span></span><br><span class="line"><span class="comment">ratio&lt;1,1000000000&gt;     纳秒</span></span><br><span class="line"><span class="comment">ratio&lt;1,1000000&gt; 		微秒</span></span><br><span class="line"><span class="comment">ratio&lt;1,1000&gt;	   		毫秒</span></span><br><span class="line"><span class="comment">ratio&lt;60*60*24&gt;			一天</span></span><br><span class="line"><span class="comment">ratio&lt;60*60&gt;			小时</span></span><br><span class="line"><span class="comment">ratio&lt;60&gt;				分钟</span></span><br><span class="line"><span class="comment">ratio&lt;1&gt;				秒</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>为了方便使用，在标准库中定义了一些常用的时间间隔时、分、秒、毫秒、微秒、纳秒</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>纳秒：<code>std::chrono::nanoseconds</code></td>
+<td>duration&lt;long long, nano&gt;</td>
+</tr>
+<tr>
+<td>微秒：<code>std::chrono::microseconds</code></td>
+<td>duration&lt;long long, micro&gt;</td>
+</tr>
+<tr>
+<td>毫秒：<code>std::chrono::milliseconds</code></td>
+<td>duration&lt;long long, milli&gt;</td>
+</tr>
+<tr>
+<td>秒：<code>std::chrono::seconds</code></td>
+<td>duration<long long></td>
+</tr>
+<tr>
+<td>分钟：<code>std::chrono::minutes</code></td>
+<td>duration&lt;int, ratio&lt;60&gt;&gt;</td>
+</tr>
+<tr>
+<td>小时：<code>std::chrono::hours</code></td>
+<td>duration&lt;int, ratio&lt;3600&gt;&gt;</td>
+</tr>
+</tbody></table>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	this_thread::<span class="built_in">sleep_for</span>(std::chrono::<span class="built_in">seconds</span>(<span class="number">1</span>));</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;1秒后&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间运算</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	this_thread::<span class="built_in">sleep_for</span>(std::chrono::<span class="built_in">seconds</span>(<span class="number">1</span>));</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;1秒后&quot;</span> &lt;&lt; endl;</span><br><span class="line">	std::<span class="function">chrono::seconds  <span class="title">test</span><span class="params">(<span class="number">100</span>)</span></span>;</span><br><span class="line">	cout &lt;&lt; test.<span class="built_in">count</span>() &lt;&lt; endl;</span><br><span class="line">	std::<span class="function">chrono::hours  <span class="title">h</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">	chrono::seconds result = h - test;</span><br><span class="line">	cout &lt;&lt; result.<span class="built_in">count</span>() &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//cout &lt;&lt; result &lt;&lt; endl;</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="时钟clocks"><a href="#时钟clocks" class="headerlink" title="时钟clocks"></a>时钟clocks</h5><h6 id="system-clock"><a href="#system-clock" class="headerlink" title="system_clock"></a>system_clock</h6><p>系统范围的实时时钟,对当前时间点 time_point 的访问，将得到时间点转换为 time_t 类型的时间对象，就可以基于这个时间对象获取到当前的时间信息了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回表示当前时间的时间点。</span></span><br><span class="line"><span class="type">static</span> std::<span class="function">chrono::time_point&lt;std::chrono::system_clock&gt; <span class="title">now</span><span class="params">()</span> <span class="keyword">noexcept</span></span>;</span><br><span class="line"><span class="comment">//将 time_point 时间点类型转换为 std::time_t 类型</span></span><br><span class="line"><span class="function"><span class="type">static</span> std::<span class="type">time_t</span> <span class="title">to_time_t</span><span class="params">( <span class="type">const</span> time_point&amp; t )</span> <span class="keyword">noexcept</span></span>;</span><br><span class="line"><span class="comment">//将 std::time_t 类型转换为 time_point 时间点类型</span></span><br><span class="line"><span class="type">static</span> std::chrono::<span class="function">system_clock::time_point <span class="title">from_time_t</span><span class="params">( std::<span class="type">time_t</span> t )</span> <span class="keyword">noexcept</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>获取当前的系统时间:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//http://www.cplusplus.com/reference/chrono/time_point/time_point/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	chrono::system_clock::time_point result;</span><br><span class="line">	chrono::duration&lt;<span class="type">int</span>, ratio&lt;<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span>&gt;&gt; <span class="built_in">day</span>(<span class="number">1</span>);</span><br><span class="line">	<span class="comment">//1970.1.1时间 + 1天</span></span><br><span class="line">	chrono::<span class="function">system_clock::time_point <span class="title">ppt</span><span class="params">(day)</span></span>; </span><br><span class="line">	<span class="comment">//1970.1.1时间 + 10天</span></span><br><span class="line">	chrono::<span class="function">system_clock::time_point <span class="title">t</span><span class="params">(chrono::duration&lt;<span class="type">int</span>, ratio&lt;<span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span>&gt;&gt;(<span class="number">10</span>))</span></span>;</span><br><span class="line">	<span class="comment">//系统当前时间</span></span><br><span class="line">	chrono::system_clock::time_point tp = chrono::system_clock::<span class="built_in">now</span>();</span><br><span class="line">	<span class="comment">//转换为time_t类型数据</span></span><br><span class="line">	<span class="type">time_t</span> tm = chrono::system_clock::<span class="built_in">to_time_t</span>(tp);</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;今天日期:&quot;</span> &lt;&lt; <span class="built_in">ctime</span>(&amp;tm);</span><br><span class="line">	std::tm* p = <span class="built_in">localtime</span>(&amp;tm);</span><br><span class="line">	cout &lt;&lt;<span class="string">&quot;格式化输出时间:&quot;</span> &lt;&lt; <span class="built_in">put_time</span>(p, <span class="string">&quot;%F %X&quot;</span>) &lt;&lt; endl;</span><br><span class="line">	cout &lt;&lt;<span class="string">&quot;count:&quot;</span> &lt;&lt; tp.<span class="built_in">time_since_epoch</span>().<span class="built_in">count</span>() &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="steady-clock"><a href="#steady-clock" class="headerlink" title="steady_clock"></a>steady_clock</h6><p>程序耗时的时长，此时使用 syetem_clock 就不合适了，因为这个时间可以跟随系统的设置发生变化。在 C++11 中提供的时钟类 steady_clock 相当于秒表，只要启动就会进行时间的累加，并且不能被修改，非常适合于进行耗时的统计。</p>
+<p>计算程序执行期间消耗的总时长</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	chrono::steady_clock::time_point start = chrono::steady_clock::<span class="built_in">now</span>();</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;start:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; ++i) </span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;运行中....&quot;</span> &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	chrono::steady_clock::time_point end = chrono::steady_clock::<span class="built_in">now</span>();</span><br><span class="line">	<span class="keyword">auto</span> dt = end - start;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;耗时:&quot;</span> &lt;&lt; dt.<span class="built_in">count</span>() &lt;&lt; <span class="string">&quot;ns&quot;</span> &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="high-resolution-clock"><a href="#high-resolution-clock" class="headerlink" title="high_resolution_clock"></a>high_resolution_clock</h6><p>high_resolution_clock 提供的时钟精度比 system_clock 要高，它也是不可以修改的。在底层源码中，这个类其实是 steady_clock 类的别名。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	chrono::high_resolution_clock::time_point start = chrono::high_resolution_clock::<span class="built_in">now</span>();</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;start:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; ++i) </span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;运行中....&quot;</span> &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	chrono::high_resolution_clock::time_point end = chrono::high_resolution_clock::<span class="built_in">now</span>();</span><br><span class="line">	<span class="keyword">auto</span> dt = end - start;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;耗时:&quot;</span> &lt;&lt; dt.<span class="built_in">count</span>() &lt;&lt; <span class="string">&quot;ns&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="时间转换函数"><a href="#时间转换函数" class="headerlink" title="时间转换函数"></a><strong>时间转换函数</strong></h5><h6 id="duration-cast"><a href="#duration-cast" class="headerlink" title="duration_cast"></a>duration_cast</h6><p>duration_cast 是 chrono 库提供的一个模板函数，这个函数不属于 duration 类。通过这个函数可以对 duration 类对象内部的时钟周期 Period，和周期次数的类型 Rep 进行修改</p>
+<p>浮点时长和整数时长间转型能隐式进行无需使用 duration_cast ，其他情况下都需要通过函数进行转换。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;thread&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	chrono::high_resolution_clock::time_point start = chrono::high_resolution_clock::<span class="built_in">now</span>();</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;start:&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; ++i) </span><br><span class="line">	&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;运行中....&quot;</span> &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line">	chrono::high_resolution_clock::time_point end = chrono::high_resolution_clock::<span class="built_in">now</span>();</span><br><span class="line">	<span class="comment">//整数时长：要求 duration_cast</span></span><br><span class="line">	<span class="keyword">auto</span> dt = chrono::<span class="built_in">duration_cast</span>&lt;chrono::milliseconds&gt;(end - start);</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;耗时:&quot;</span> &lt;&lt; dt.<span class="built_in">count</span>() &lt;&lt; <span class="string">&quot;ms&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="comment">//小数时长：不要求 duration_cast</span></span><br><span class="line">	chrono::duration&lt;<span class="type">double</span>, ratio&lt;<span class="number">1</span>, <span class="number">1000</span>&gt;&gt; dms = end - start;</span><br><span class="line">	cout &lt;&lt; <span class="string">&quot;耗时:&quot;</span> &lt;&lt; dt.<span class="built_in">count</span>() &lt;&lt; <span class="string">&quot;ms&quot;</span> &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="time-point-cast"><a href="#time-point-cast" class="headerlink" title="time_point_cast"></a>time_point_cast</h6><p>time_point_cast 也是 chrono 库提供的一个模板函数，这个函数不属于 time_point 类。函数的作用是对时间点进行转换，因为不同的时间点对象内部的时钟周期 Period，和周期次数的类型 Rep 可能也是不同的，一般情况下它们之间可以进行隐式类型转换，也可以通过该函数显示的进行转换，函数原型如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">class</span> Duration&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">print_ms</span><span class="params">(<span class="type">const</span> chrono::time_point&lt;chrono::high_resolution_clock, Duration&gt;&amp; time_point)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout &lt;&lt; time_point.<span class="built_in">time_since_epoch</span>().<span class="built_in">count</span>() &lt;&lt; <span class="string">&quot; ms\n&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">chrono::time_point&lt;chrono::high_resolution_clock, chrono::milliseconds&gt; <span class="title">time_point_sec</span><span class="params">(chrono::seconds(<span class="number">6</span>))</span></span>;</span><br><span class="line">    <span class="comment">// 无精度损失, 可以进行隐式类型转换</span></span><br><span class="line">    <span class="function">chrono::time_point&lt;chrono::high_resolution_clock, chrono::milliseconds&gt; <span class="title">time_point_ms</span><span class="params">(time_point_sec)</span></span>;</span><br><span class="line">    <span class="built_in">print_ms</span>(time_point_ms);    <span class="comment">// 6000 ms</span></span><br><span class="line"></span><br><span class="line">    time_point_ms = chrono::<span class="built_in">time_point</span>&lt;chrono::high_resolution_clock, chrono::milliseconds&gt;(chrono::<span class="built_in">milliseconds</span>(<span class="number">6789</span>));</span><br><span class="line">    <span class="comment">// error，会损失精度，不允许进行隐式的类型转换</span></span><br><span class="line">    <span class="comment">//chrono::time_point&lt;chrono::high_resolution_clock, chrono::seconds&gt; sec(time_point_ms);</span></span><br><span class="line">    <span class="comment">// 显示类型转换,会损失精度。6789 truncated to 6000</span></span><br><span class="line">    time_point_sec = std::chrono::<span class="built_in">time_point_cast</span>&lt;chrono::seconds&gt;(time_point_ms);</span><br><span class="line">    <span class="built_in">print_ms</span>(time_point_sec); <span class="comment">// 6000 ms</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意事项</strong>：关于时间点的转换如果没有没有精度的损失可以直接进行隐式类型转换，如果会损失精度只能通过显示类型转换，也就是调用 time_point_cast 函数来完成该操作</p>
+<h5 id="C-文件系统filesystem"><a href="#C-文件系统filesystem" class="headerlink" title="C++文件系统filesystem"></a>C++文件系统filesystem</h5><p>filesystem主要用来处理文件目录，也就是文件夹创建和删除，遍历，不是用来读写文件</p>
+<h6 id="path类："><a href="#path类：" class="headerlink" title="path类："></a>path类：</h6><p>路径处理</p>
+<h6 id="file-status类"><a href="#file-status类" class="headerlink" title="file_status类"></a>file_status类</h6><p>文件状态一些判断</p>
+<h6 id="directory-entry类"><a href="#directory-entry类" class="headerlink" title="directory_entry类"></a>directory_entry类</h6><p>文件路口</p>
+<h6 id="directory-iterator类"><a href="#directory-iterator类" class="headerlink" title="directory_iterator类"></a>directory_iterator类</h6><p>文件目录的遍历</p>
+<p>filesystem中成员函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断path是否存在  不存在返回false 存在返回true</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">exists</span><span class="params">(file_status stat)</span> <span class="keyword">noexcept</span></span>;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">exists</span><span class="params">(<span class="type">const</span> path&amp; pval)</span></span>;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">exists</span><span class="params">(<span class="type">const</span> path&amp; pval, error_code&amp; ec)</span> <span class="keyword">noexcept</span></span>;</span><br><span class="line"><span class="comment">//构建目录的  只能构建一层目录</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">create_directory</span><span class="params">(<span class="type">const</span> path&amp; pval)</span></span>;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">create_directory</span><span class="params">(<span class="type">const</span> path&amp; pval, error_code&amp; ec)</span> <span class="keyword">noexcept</span></span>;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">create_directory</span><span class="params">(<span class="type">const</span> path&amp; pval, <span class="type">const</span> path&amp; attr)</span></span>;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">create_directory</span><span class="params">(<span class="type">const</span> path&amp; pval, <span class="type">const</span> path&amp; attr, error_code&amp; ec)</span> <span class="keyword">noexcept</span></span>;</span><br><span class="line"><span class="comment">//构建目录，可以构建 a/b/c 这种目录</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">create_directories</span><span class="params">(<span class="type">const</span> path&amp; pval)</span></span>;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">create_directories</span><span class="params">(<span class="type">const</span> path&amp; pval, error_code&amp; ec)</span> <span class="keyword">noexcept</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">zenfy</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2024/06/15/C/">http://example.com/2024/06/15/C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">上世纪國男</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C/">C++</a></div><div class="post_share"><div class="social-share" data-image="https://picture.gptkong.com/20240618/16527145e5c86d419092d0637b2069c668.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/06/15/C-1/" title="C#笔记"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C#笔记</div></div></a></div><div class="next-post pull-right"><a href="/2024/06/15/git/" title="git使用"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">git使用</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://picture.gptkong.com/20240618/16527145e5c86d419092d0637b2069c668.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zenfy</div><div class="author-info__description">温水煮青蛙，一只又一只</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zenfy0326"><i class="fab fa-github"></i><span>点个赞吧！</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/zenfy0326" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2630391423@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">团长，你就是个寄吧！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#C-%E7%AC%94%E8%AE%B0-%E4%B8%8A%E4%B8%96%E7%BA%AA%E5%9C%8B%E7%94%B7"><span class="toc-number">1.</span> <span class="toc-text">C++笔记-上世纪國男</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C%E4%B8%8EC-%E7%9A%84%E5%8C%BA%E5%88%AB-%E4%B8%80"><span class="toc-number">2.</span> <span class="toc-text">C与C++的区别** (一)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C%E4%B8%8EC-%E7%9A%84%E5%8C%BA%E5%88%AB-%E4%BA%8C%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">C与C++的区别 (二）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%9C%E4%B8%9A"><span class="toc-number">4.</span> <span class="toc-text">作业</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="toc-number">5.</span> <span class="toc-text">类和对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">构造函数和析构函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C-%E7%89%B9%E6%AE%8A%E6%88%90%E5%91%98"><span class="toc-number">7.</span> <span class="toc-text">C++特殊成员</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C-%E5%8F%8B%E5%85%83"><span class="toc-number">8.</span> <span class="toc-text">C++友元</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C-%E7%B1%BB%E7%9A%84%E7%BB%A7%E6%89%BF"><span class="toc-number">9.</span> <span class="toc-text">C++类的继承</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C-%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E5%A4%9A%E6%80%81"><span class="toc-number">10.</span> <span class="toc-text">C++虚函数和多态</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C-%E6%A8%A1%E6%9D%BF"><span class="toc-number">11.</span> <span class="toc-text">C++模板</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C-%E5%8F%AF%E5%8F%98%E5%8F%82%E6%A8%A1%E6%9D%BF"><span class="toc-number">12.</span> <span class="toc-text">C++可变参模板</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">13.</span> <span class="toc-text">C++智能指针</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C-%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="toc-number">14.</span> <span class="toc-text">C++类型推断</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C-IO%E6%B5%81"><span class="toc-number">15.</span> <span class="toc-text">C++IO流</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">16.</span> <span class="toc-text">C++正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%85%B7%E6%9C%89%E7%89%B9%E6%AE%8A%E6%84%8F%E4%B9%89%E7%9A%84%E5%85%83%E5%AD%97%E7%AC%A6"><span class="toc-number">16.1.</span> <span class="toc-text">具有特殊意义的元字符</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C-%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4%E5%BA%93"><span class="toc-number">17.</span> <span class="toc-text">C++日期时间库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E9%97%B4%E9%9A%94duration"><span class="toc-number">18.</span> <span class="toc-text">时间间隔duration</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%B6%E9%92%9Fclocks"><span class="toc-number">19.</span> <span class="toc-text">时钟clocks</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#system-clock"><span class="toc-number">19.1.</span> <span class="toc-text">system_clock</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#steady-clock"><span class="toc-number">19.2.</span> <span class="toc-text">steady_clock</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#high-resolution-clock"><span class="toc-number">19.3.</span> <span class="toc-text">high_resolution_clock</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E8%BD%AC%E6%8D%A2%E5%87%BD%E6%95%B0"><span class="toc-number">20.</span> <span class="toc-text">时间转换函数</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#duration-cast"><span class="toc-number">20.1.</span> <span class="toc-text">duration_cast</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#time-point-cast"><span class="toc-number">20.2.</span> <span class="toc-text">time_point_cast</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#C-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9Ffilesystem"><span class="toc-number">21.</span> <span class="toc-text">C++文件系统filesystem</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#path%E7%B1%BB%EF%BC%9A"><span class="toc-number">21.1.</span> <span class="toc-text">path类：</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#file-status%E7%B1%BB"><span class="toc-number">21.2.</span> <span class="toc-text">file_status类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#directory-entry%E7%B1%BB"><span class="toc-number">21.3.</span> <span class="toc-text">directory_entry类</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#directory-iterator%E7%B1%BB"><span class="toc-number">21.4.</span> <span class="toc-text">directory_iterator类</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/15/Markdown/" title="Markdown">Markdown</a><time datetime="2024-06-15T03:02:04.000Z" title="发表于 2024-06-15 11:02:04">2024-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/15/C-1/" title="C#笔记">C#笔记</a><time datetime="2024-06-15T03:01:50.000Z" title="发表于 2024-06-15 11:01:50">2024-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/15/C/" title="C++笔记">C++笔记</a><time datetime="2024-06-15T03:01:31.000Z" title="发表于 2024-06-15 11:01:31">2024-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/06/15/git/" title="git使用">git使用</a><time datetime="2024-06-14T16:00:00.000Z" title="发表于 2024-06-15 00:00:00">2024-06-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/12/hello-world/" title="Hexo笔记">Hexo笔记</a><time datetime="2023-11-11T16:00:00.000Z" title="发表于 2023-11-12 00:00:00">2023-11-12</time></div></div></div></div></div></div></main><footer id="footer" style="background: #f5fffa"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By zenfy</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href="icp链接"><span>备案号：18000875</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
