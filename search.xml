@@ -984,11 +984,22 @@
 <p>现在，注意当我们执行 git log –decorate 时，我们可以看到我们的标签了</p>
 <h2 id="git链接到github"><a href="#git链接到github" class="headerlink" title="git链接到github"></a>git链接到github</h2><p>你的本地 Git 仓库和 GitHub 仓库之间的传输是通过SSH加密的，所以我们需要配置验证信息：</p>
 <p>在本地仓库文件目录下右键git bash使用以下命令生成 SSH Key：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &quot;你的Github邮箱@example.com&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入</span><br><span class="line">ssh-keygen -t rsa -C &quot;你的Github邮箱@example.com&quot;  //获取ssh的公钥，输入后连按三下回车键即可</span><br><span class="line">ssh -T git@github.com //验证连接上ssh没，失败会提示的</span><br><span class="line">可能会显示22号端口连不了</span><br><span class="line">换443端口：</span><br><span class="line">ssh -T -p 443 git@ssh.github.com</span><br><span class="line"># -p 443表示使用443端口，要是443也被占用，也可以尝试其他端口</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>然后使用默认的，一路回车就行。</p>
 <p>然后在C盘用户-用户名-.ssh文件内找到两个文件夹：id_rsa和id_rsa.pub，id_rsa.pub里面的就是你的ssh配置的key，然后复制到github里面（回到 github 上，进入 Account &#x3D;&gt; Settings（账户配置），复制粘贴到key上就行）</p>
-]]></content>
+<h2 id="从本地push到github仓库"><a href="#从本地push到github仓库" class="headerlink" title="从本地push到github仓库"></a>从本地push到github仓库</h2><p><code>git init</code>: 初始化一个新的 Git 仓库。</p>
+<p><code>git remote add origin [url]</code>: 将本地仓库与远程仓库关联。</p>
+<p><code>git add .</code> 或 <code>git add [file]</code>: 将文件更改添加到暂存区。<br><code>git rm --cached [path]</code>: 从暂存区中删除文件（但保留在工作目录中）。<br>提交管理:</p>
+<p><code>git commit -m &quot;[message]&quot;</code>: 将暂存区内容提交到本地仓库。<br><code>git status: </code>查看仓库状态，包括更改、暂存和未跟踪的文件。git branch: 列出所有本地分支。<br><code>git checkout -b [branch_name]</code>: 创建并切换到新分支。<br>远程同步:</p>
+<p><code>git pull --rebase origin master</code>: 更新项目并避免与远程仓库的代码发生冲突。<br><code>git push origin master</code>: 将本地仓库的更改推送到远程仓库。</p>
+<p>举例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init		//初始化本地文件夹，添加git的一些文件</span><br><span class="line">git add .    //add后面有空格的，把本地文件加载到git的一些版本库/暂存区</span><br><span class="line">git commit -m &quot;first commit&quot; //提交第一次修改信息“firts commit”</span><br><span class="line">git remote add origin https://github.com/xxxx/xxxx.git //链接远程仓库,xxx是仓库的链接一部分</span><br><span class="line">git pull</span><br><span class="line">git push 	//拉取远程仓库代码到本地</span><br><span class="line">git push -u origin master //push到远程仓库的master分支</span><br><span class="line">如果更新被拒绝，因为您当前分支的最新提交落后于其对应的远程分支</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="从github克隆到本地"><a href="#从github克隆到本地" class="headerlink" title="从github克隆到本地"></a>从github克隆到本地</h2><p><code>git clone</code> [地址或者项目的ssh]就好了。</p>
+<h2 id="远程分支操作"><a href="#远程分支操作" class="headerlink" title="远程分支操作"></a>远程分支操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin是远程仓库的别名，我这里用repo代替了。</span><br><span class="line"></span><br><span class="line">git branch -r //查看远程分支列表</span><br><span class="line"></span><br><span class="line">git branch apple //创建分支apple，现在这个分支还在本地</span><br><span class="line"></span><br><span class="line">git push repo apple //push这个apple分支到远程仓库repo上</span><br><span class="line"></span><br><span class="line">git branch --set-upstream-to=repo/apple apple //将repo仓库的远程分支apple和本地分支apple关联</span><br><span class="line"></span><br><span class="line">git push repo --delete apple  //将远程仓库repo的apple分支删除。 </span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>git</category>
         <category>github</category>
