@@ -1656,4 +1656,51 @@
         <tag>HTML</tag>
       </tags>
   </entry>
+  <entry>
+    <title>AI工具以及使用</title>
+    <url>/2024/06/15/ai/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="AI工具"><a href="#AI工具" class="headerlink" title="AI工具"></a>AI工具</h1><p>AI工具能方便项目更迅速的完成。不仅能写代码，还能检查bug，给予适当的建议，以及帮助我们快速制作视频、图片、音源等。</p>
+<h2 id="1-Sovits"><a href="#1-Sovits" class="headerlink" title="1.Sovits"></a>1.Sovits</h2><p>根据模型更改视频人物的声音，代表视频有AI王心凌、AI爱莉希雅、AI熊大、AI懒洋洋等制作的’’活字印刷’’视频</p>
+<h3 id="大致训练步骤"><a href="#大致训练步骤" class="headerlink" title="大致训练步骤"></a>大致训练步骤</h3><p>1.训练质量比数量重要，大约要高质量的音频90分钟</p>
+<p>2.使用UVR5进行人声和背景音乐分离（保存为wav格式），步骤：MDX-Net 1024 0.75；VR—A 320 3 5_HP；VR-A UVR-DE-DE 320 3</p>
+<p>3.使用RX10进行呼吸、降噪去除，具体步骤为：对话去除混响-&gt;呼吸（选中呼吸，编辑，查找类似事件，模块，渲染，静音）-&gt;去噪声（可选），保存为wav格式。</p>
+<p>4.使用Audition Slicer对语音切片，单个语音15秒以内，必须是由字母、下划线、数字组成的wav格式。</p>
+<p>5.把文件夹放在sovits-dataset_raw中，点击sovits里的bat文件开始训练，推荐使用vec768l12进行</p>
+<p>6.训练好的模型文件.pth默认放在sovits文件的logs&#x2F;44k文件下。<br>  模型配置文件默认放在sovits文件的configs文件下。204364kb</p>
+<p><strong>期间要使用UVR5、RX10、AUdition Slicer软件进行音视频操作。</strong></p>
+<h3 id="Sovits设置使用"><a href="#Sovits设置使用" class="headerlink" title="Sovits设置使用"></a>Sovits设置使用</h3><p>1.模型文件必须包含.pth文件（模型文件）和.json文件（模型的配置文件）</p>
+<p>2.不推荐扩散模型和聚类模型的配置（可有可无的），有也无伤大雅。</p>
+<p>3.模型文件.pth默认放在sovits文件的logs&#x2F;44k文件下。</p>
+<p>4.模型配置文件默认放在sovits文件的configs文件下。<br>推荐：<br>5.在sovits网页最下一行选择独立目录模式，把所有的模型文件、模型配置文件、扩散模型、扩散模型配置文件等，放在sovits的models文件中（注意要有方便记忆的模型名字，可以有中文，不然很多模型记不住的）</p>
+<p>6.可以打开sovits进行换声了</p>
+<h2 id="2-GPT"><a href="#2-GPT" class="headerlink" title="2.GPT"></a>2.GPT</h2><p>这里提供两个免费的GPT网站：</p>
+<p><a href="https://yiyan.baidu.com/">文心一言 (baidu.com)</a></p>
+<p><a href="https://www.doubao.com/chat/39821039323906">豆包 - 抖音旗下 AI 智能助手 (doubao.com)</a></p>
+<h2 id="3-文生图"><a href="#3-文生图" class="headerlink" title="3.文生图"></a>3.文生图</h2><p>网站：[SDXL Turbo 和 Stable Diffusion 3 免费在线生成器](<a href="https://sdxlturbo.ai/zh-CN/app?prompt=black">https://sdxlturbo.ai/zh-CN/app?prompt=black</a> flower)</p>
+<h3 id="Stable-Diffusion使用"><a href="#Stable-Diffusion使用" class="headerlink" title="Stable Diffusion使用"></a>Stable Diffusion使用</h3><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><img src="https://docs.stablediffusion.cn/upload/image/20240204/1707056536878137.png"></p>
+<p>①首先我们输入的提示词（prompt）会首先进入TE（TextEncoder），而clip就是stable diffusion所使用的TE。TE这部分的作用就是把tag转化成U-net网络能理解的embedding形式，当然了，我们平时用的emb模型，就是一种自然语言很难表达的promot。（简单的说就是将“人话”转换成AI能够理解的语言）</p>
+<p>②将“人话”转换成AI能够理解的语言之后，U-net会对随机种子生成的噪声图进行引导，来指导去噪的方向，找出需要改变的地方并给出改变的数据。我们之前所设置的steps数值就是去噪的次数，所选择的采样器、CFG等参数也是在这个阶段起作用的。（简单的说就是U-net死盯着乱码图片，看他像什么，并给出更改的建议，使得图像更加想这个东西）</p>
+<p>③一张图片中包含的信息是非常多的，直接计算会消耗巨量的资源，所以从一开始上面的这些计算都是在一个比较小的潜空间进行的。而在潜空间的数据并不是人能够正常看到的图片。这个时候就需要VAE用来将潜空间“翻译”成人能够正常看到的图片的（简单的说就是把AI输出翻译成人能看到的图片）</p>
+<p>经过以上三个步骤，就实现了“提示词→图片”的转化，也就是AI画出了我们想要的图片。这三个步骤也就对应了模型的三个组成部分：clip、unet、VA</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>这里推荐使用秋叶的LoRA模型训练包</p>
+<p><a href="https://www.bilibili.com/video/BV1AL411q7Ub/">https://www.bilibili.com/video/BV1AL411q7Ub/</a></p>
+<h3 id="提示词"><a href="#提示词" class="headerlink" title="提示词"></a>提示词</h3><p><a href="https://docs.qq.com/doc/DWEpNdERNbnBRZWNL">提示词汇集)</a></p>
+<h3 id="文生图"><a href="#文生图" class="headerlink" title="文生图"></a>文生图</h3><p><img src="https://picture.gptkong.com/20240623/152095c5469a2f41e59246d1d2a5bcc75b.png" alt="一目了然"></p>
+<p>根据这个图，使用Stable Diffusion进行文生图就一目了然了。</p>
+<p>注意：必须使用英伟达显卡。</p>
+<h3 id="图生图"><a href="#图生图" class="headerlink" title="图生图"></a>图生图</h3><p>如图所示</p>
+<p><img src="https://picture.gptkong.com/20240623/15238b3b7563044d6ab37adf9772d28be8.png"></p>
+<p>一张图就看懂了。</p>
+<h3 id="Stable-Diffusion扩展安装"><a href="#Stable-Diffusion扩展安装" class="headerlink" title="Stable Diffusion扩展安装"></a>Stable Diffusion扩展安装</h3><p>这个AI还能安装其他插件，依次点击<strong>扩展-可用-加载自</strong>，然后重启webui即可。</p>
+<h3 id="Ps安装Stable-Diffusion绘画插件"><a href="#Ps安装Stable-Diffusion绘画插件" class="headerlink" title="Ps安装Stable Diffusion绘画插件"></a>Ps安装Stable Diffusion绘画插件</h3><p><a href="https://github.com/AbdullahAlfaraj/Auto-Photoshop-StableDiffusion-Plugin/releases/tag/v1.2.3">插件页面)</a></p>
+<p>下载好之后安装到ps的Plug-ins目录下。</p>
+<p>然后在ps里面打开插件即可。</p>
+]]></content>
+      <categories>
+        <category>AI</category>
+      </categories>
+      <tags>
+        <tag>AI</tag>
+      </tags>
+  </entry>
 </search>
