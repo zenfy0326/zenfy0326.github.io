@@ -84,6 +84,8 @@
 <h2 id="8-怎么禁用F12"><a href="#8-怎么禁用F12" class="headerlink" title="8.怎么禁用F12"></a>8.怎么禁用F12</h2><p>添加js文件输入以下代码即可</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">((function() &#123;var callbacks = [],timeLimit = 50,open = false;setInterval(loop, 1);return &#123;addListener: function(fn) &#123;callbacks.push(fn);&#125;,cancleListenr: function(fn) &#123;callbacks = callbacks.filter(function(v) &#123;return v !== fn;&#125;);&#125;&#125;</span><br><span class="line">function loop() &#123;var startTime = new Date();debugger;if (new Date() - startTime &gt; timeLimit) &#123;if (!open) &#123;callbacks.forEach(function(fn) &#123;fn.call(null);&#125;);&#125;open = true;window.stop();alert(&#x27;此处添加关掉调试时提示的文字&#x27;);document.body.innerHTML = &quot;&quot;;&#125; else &#123;open = false;&#125;&#125;&#125;)()).addListener(function() &#123;window.location.reload();&#125;);</span><br><span class="line"></span><br><span class="line">function toDevtools()&#123;</span><br><span class="line">  let num = 0;</span><br><span class="line">  let devtools = new Date();</span><br><span class="line">  devtools.toString = function() &#123;</span><br><span class="line">    num++;</span><br><span class="line">    if (num &gt; 1) &#123;</span><br><span class="line">        window.location.href = &quot;about:blank&quot;</span><br><span class="line">        blast();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(&#x27;&#x27;, devtools);</span><br><span class="line">&#125;</span><br><span class="line">toDevtools();</span><br><span class="line"></span><br><span class="line">document.onkeydown = document.onkeyup = document.onkeydown = function(event) &#123;</span><br><span class="line">    var e = event || window.event || arguments.callee.caller.arguments[0];</span><br><span class="line">    if (e &amp;&amp; (e.keyCode == 123)) &#123;</span><br><span class="line">      e.keyCode = 0;</span><br><span class="line">      e.returnValue = false;</span><br><span class="line">      btf.snackbarShow(&#x27;此处添加按F12时提示的文字&#x27;);</span><br><span class="line">      return (false);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$(document).keydown(function(e)&#123;</span><br><span class="line">  if( e.ctrlKey  == true &amp;&amp; e.keyCode == 83 )&#123;</span><br><span class="line">    console.log(&#x27;ctrl+s&#x27;);</span><br><span class="line">    return false;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
+<h2 id="9-图片链接失效"><a href="#9-图片链接失效" class="headerlink" title="9.图片链接失效"></a>9.图片链接失效</h2><p>在source文件夹下创建文件夹保存图片，然后在butterfly.config.yml文件中，把路径改成&#x2F;你新建的文件夹名字&#x2F;图片名称      即可，在md文件中引用图片需要添加两个..在&#x2F;之前。</p>
+<p><img src="/../img/YuanShen.png"></p>
 ]]></content>
       <categories>
         <category>hexo</category>
@@ -1696,10 +1698,11 @@
 <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>这里推荐使用秋叶的LoRA模型训练包</p>
 <p><a href="https://www.bilibili.com/video/BV1AL411q7Ub/">https://www.bilibili.com/video/BV1AL411q7Ub/</a></p>
 <h3 id="提示词"><a href="#提示词" class="headerlink" title="提示词"></a>提示词</h3><p><a href="https://docs.qq.com/doc/DWEpNdERNbnBRZWNL">提示词汇集)</a></p>
-<h3 id="文生图"><a href="#文生图" class="headerlink" title="文生图"></a>文生图</h3><p><img src="https://picture.gptkong.com/20240623/152095c5469a2f41e59246d1d2a5bcc75b.png" alt="一目了然"></p>
+<h3 id="文生图"><a href="#文生图" class="headerlink" title="文生图"></a>文生图</h3><p>（图片网址链接失效了）</p>
+<p><img src="https://picture.gptkong.com/20240623/152095c5469a2f41e59246d1d2a5bcc75b.png" alt="一目了然"></p>
 <p>根据这个图，使用Stable Diffusion进行文生图就一目了然了。</p>
 <p>注意：必须使用英伟达显卡。</p>
-<h3 id="图生图"><a href="#图生图" class="headerlink" title="图生图"></a>图生图</h3><p>如图所示</p>
+<h3 id="图生图"><a href="#图生图" class="headerlink" title="图生图"></a>图生图</h3><p>如图所示（图片网址链接失效了）</p>
 <p><img src="https://picture.gptkong.com/20240623/15238b3b7563044d6ab37adf9772d28be8.png"></p>
 <p>一张图就看懂了。</p>
 <h3 id="Stable-Diffusion扩展安装"><a href="#Stable-Diffusion扩展安装" class="headerlink" title="Stable Diffusion扩展安装"></a>Stable Diffusion扩展安装</h3><p>这个AI还能安装其他插件，依次点击<strong>扩展-可用-加载自</strong>，然后重启webui即可。</p>
@@ -1746,9 +1749,9 @@
 <p>步骤：MDX-Net 1024 0.75；</p>
 <p>VR—A 320 3 5_HP；</p>
 <p>VR-A UVR-DE-DE 320 3</p>
-<p>这是我的MDX-Net设置图片：</p>
+<p>这是我的MDX-Net设置图片：图片失效了，有空我在补充</p>
 <p><img src="https://picture.gptkong.com/20240623/1823a89b73d6244f7094a2ee5eab70dec8.png"></p>
-<p>这是我的VR Architecture设置：</p>
+<p>这是我的VR Architecture设置：图片失效了，有空我在补充</p>
 <p><img src="https://picture.gptkong.com/20240623/1824b7c58c529d433d8c2162b141b152f7.png"></p>
 <p>接下来只需要按照上面的顺序进行人声分离即可，进行到第三步，就能获得干净的人声了。</p>
 ]]></content>
@@ -1779,7 +1782,7 @@
 <p>这是一个github项目</p>
 <h1 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h1><p>在安装目录下找到vsr文件，找到并点击启动程序.exe既可启动</p>
 <p>控制台不能关，然后直接点open即可打开文件夹选你要去字幕的视频，然后点击run即可全自动去字幕了。</p>
-<p>如图：</p>
+<p>如图：图片失效了</p>
 <p><img src="https://picture.gptkong.com/20240623/183693c6ac02c3464fb020dfb152b5fc15.png"></p>
 <p>我只能说，全自动还可以，就是速度慢，效果差。</p>
 ]]></content>
@@ -3268,7 +3271,7 @@
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//widget.h</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Ui::widget* ui;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>3，申请内存，设置ui</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//widget.cpp</span></span><br><span class="line">Widget::<span class="built_in">Widget</span>(QWidget *parent)</span><br><span class="line">    : <span class="built_in">QWidget</span>(parent)</span><br><span class="line">    ,<span class="built_in">ui</span>(<span class="keyword">new</span> Ui::widget)	<span class="comment">//给ui指针分配内存</span></span><br><span class="line">&#123;</span><br><span class="line">        ui-&gt;<span class="built_in">setupUi</span>(<span class="keyword">this</span>);	<span class="comment">//给当前窗口this，设置ui界面</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">//widget.cpp</span></span><br><span class="line">Widget::<span class="built_in">Widget</span>(QWidget *parent)</span><br><span class="line">    : <span class="built_in">QWidget</span>(parent)</span><br><span class="line">    ,<span class="built_in">ui</span>(<span class="keyword">new</span> Ui::widget)	<span class="comment">//给ui指针分配内存</span></span><br><span class="line">&#123;</span><br><span class="line">        ui-&gt;<span class="built_in">setupUi</span>(<span class="keyword">this</span>);	<span class="comment">//给当前窗口this，设置ui界面</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -3509,6 +3512,57 @@
         <tag>CSGO</tag>
         <tag>Steam</tag>
         <tag>Buff</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>制作鬼畜视频/特效视频等等</title>
+    <url>/2024/04/13/CreateVideo/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>由于时间限制，暂时先写一下这些视频是制作原理和使用的工具、步骤，然后根据原理是可以很快的制作出各位脑中想象的作品。但凡是个正常人，花点时间肯定能做出来的噢。不会有人知道怎么做，但是动手做不出来吧？</p>
+<p>melodyne使用+电音</p>
+<p>百万填词技巧</p>
+<p>鬼畜技巧</p>
+<p>AI换音</p>
+<p>公众号管理</p>
+<p>视频剪辑+关键帧+其他</p>
+<h1 id="鬼畜视频"><a href="#鬼畜视频" class="headerlink" title="鬼畜视频"></a>鬼畜视频</h1><h2 id="原理如下："><a href="#原理如下：" class="headerlink" title="原理如下："></a>原理如下：</h2><p>分析好音频BGM的节拍，在每个节拍出添加自己需要的音频，然后通过调音软件进行调音，然后就完成了一个鬼畜的调音填词。工作量很大，技术要求也挺高的。</p>
+<h2 id="具体步骤大致为："><a href="#具体步骤大致为：" class="headerlink" title="具体步骤大致为："></a>具体步骤大致为：</h2><h3 id="选曲"><a href="#选曲" class="headerlink" title="选曲"></a>选曲</h3><h3 id="填词"><a href="#填词" class="headerlink" title="填词"></a>填词</h3><h3 id="分析BGM的节拍"><a href="#分析BGM的节拍" class="headerlink" title="分析BGM的节拍"></a>分析BGM的节拍</h3><h3 id="使用AU-RX10-Vegas-medyne进行音频修改"><a href="#使用AU-RX10-Vegas-medyne进行音频修改" class="headerlink" title="使用AU+RX10+Vegas+medyne进行音频修改"></a>使用AU+RX10+Vegas+medyne进行音频修改</h3><h3 id="成品"><a href="#成品" class="headerlink" title="成品"></a>成品</h3><h1 id="AI换音视频"><a href="#AI换音视频" class="headerlink" title="AI换音视频"></a>AI换音视频</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>使用Sovits进行AI换音，很容易实现音源更换，什么活字印刷的动漫、AI剑魔等都可以这样换词换音，具体操作查看其它文档。</p>
+<h1 id="百万填词"><a href="#百万填词" class="headerlink" title="百万填词"></a>百万填词</h1><p>步骤和鬼畜视频类似，工作量很大，视频效果很好。就是针对medyne和AU调整音频要求要高很多。</p>
+<p>选曲</p>
+<p>填词</p>
+<p>分析BGM的节拍</p>
+<p>使用AU+RX10+Vegas+medyne进行音频修改</p>
+<p>成品</p>
+]]></content>
+      <categories>
+        <category>视频</category>
+        <category>鬼畜</category>
+      </categories>
+      <tags>
+        <tag>视频</tag>
+        <tag>鬼畜</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Unity3D笔记</title>
+    <url>/2024/06/15/Unity3D/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Unity3D笔记"><a href="#Unity3D笔记" class="headerlink" title="Unity3D笔记"></a>Unity3D笔记</h1><h2 id="1-如何优化move手感"><a href="#1-如何优化move手感" class="headerlink" title="1.如何优化move手感"></a>1.如何优化move手感</h2><p>区别在于：Input.GetAxis和Input.GetAxisRaw两个函数的返回值不一样，</p>
+<p>Input.GetAxis：返回值 -1~1</p>
+<p>Input.GetAxisRaw：返回值 -1，0，1</p>
+<ul>
+<li><strong>平滑处理</strong>: 如果你希望输入有更平滑的过渡（例如角色移动起来不要过于突然），那么使用 <code>Input.GetAxis</code> 更合适。</li>
+<li><strong>即时反馈</strong>: 如果你需要即按即得的响应，那么 <code>Input.GetAxisRaw</code> 是更好的选择。</li>
+</ul>
+<p>总的来说，<code>Input.GetAxisRaw</code> 提供了更加直接和即时的输入数据，适用于需要快速和精确响应的场景，而 <code>Input.GetAxis</code> 则因其平滑处理在某些情况下更适合提供较好的用户体验。</p>
+<h2 id="2-如何优化跳跃手感"><a href="#2-如何优化跳跃手感" class="headerlink" title="2.如何优化跳跃手感"></a>2.如何优化跳跃手感</h2><p>参考马里奥的跳跃，在人物跳跃上行的时候和下行的时候给人物的刚体添加力的作用，无论是增加重力、减少重力还是使用Addforce函数都可以。</p>
+<p>用于对rigidbody组件对象添加力的作用。<br>其参数决定了添加力的作用方式，因此参数不同，其获得的效果（动量、动能）也不同。<br>另外unity重力加速度默认为9.81左右，随着物体的状况会有改变。</p>
+]]></content>
+      <categories>
+        <category>C#</category>
+        <category>Unity3D</category>
+      </categories>
+      <tags>
+        <tag>C#</tag>
+        <tag>Unity3D</tag>
       </tags>
   </entry>
 </search>
