@@ -992,12 +992,14 @@
 <p>然后使用默认的，一路回车就行。</p>
 <p>然后在C盘用户-用户名-.ssh文件内找到两个文件夹：id_rsa和id_rsa.pub，id_rsa.pub里面的就是你的ssh配置的key，然后复制到github里面（回到 github 上，进入 Account &#x3D;&gt; Settings（账户配置），复制粘贴到key上就行）</p>
 <h2 id="从本地push到github仓库"><a href="#从本地push到github仓库" class="headerlink" title="从本地push到github仓库"></a>从本地push到github仓库</h2><p><code>git init</code>: 初始化一个新的 Git 仓库。</p>
+<p>git remote -v ：查看是否已经绑定其他的远程仓库，</p>
+<p>git remote rm origin xxxx：删除远程仓库xxxx</p>
 <p><code>git remote add origin [url]</code>: 将本地仓库与远程仓库关联。</p>
 <p><code>git add .</code> 或 <code>git add [file]</code>: 将文件更改添加到暂存区。<br><code>git rm --cached [path]</code>: 从暂存区中删除文件（但保留在工作目录中）。<br>提交管理:</p>
 <p><code>git commit -m &quot;[message]&quot;</code>: 将暂存区内容提交到本地仓库。<br><code>git status: </code>查看仓库状态，包括更改、暂存和未跟踪的文件。git branch: 列出所有本地分支。<br><code>git checkout -b [branch_name]</code>: 创建并切换到新分支。<br>远程同步:</p>
 <p><code>git pull --rebase origin master</code>: 更新项目并避免与远程仓库的代码发生冲突。<br><code>git push origin master</code>: 将本地仓库的更改推送到远程仓库。</p>
 <p>举例：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init		//初始化本地文件夹，添加git的一些文件</span><br><span class="line">git add .    //add后面有空格的，把本地文件加载到git的一些版本库/暂存区</span><br><span class="line">git commit -m &quot;first commit&quot; //提交第一次修改信息“firts commit”</span><br><span class="line">git remote add origin https://github.com/xxxx/xxxx.git //链接远程仓库,xxx是仓库的链接一部分</span><br><span class="line">git pull</span><br><span class="line">git push 	//拉取远程仓库代码到本地</span><br><span class="line">git push -u origin master //push到远程仓库的master分支</span><br><span class="line">如果更新被拒绝，因为您当前分支的最新提交落后于其对应的远程分支</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init		//初始化本地文件夹，添加git的一些文件</span><br><span class="line">git add .    //add后面有空格的，把本地文件加载到git的一些版本库/暂存区</span><br><span class="line">git commit -m &quot;first commit&quot; //提交第一次修改信息“firts commit”</span><br><span class="line">git remote add origin https://github.com/xxxx/xxxx.git //链接远程仓库,xxx是仓库的链接一部分</span><br><span class="line">git pull	//下载远程仓库的文件到本地仓库。</span><br><span class="line">git push 	//拉取远程仓库代码到本地</span><br><span class="line">git push -u origin master //push到远程仓库的master分支</span><br><span class="line">如果更新被拒绝，因为您当前分支的最新提交落后于其对应的远程分支</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 
@@ -1687,10 +1689,10 @@
 <p>3.模型文件.pth默认放在sovits文件的logs&#x2F;44k文件下。</p>
 <p>4.模型配置文件默认放在sovits文件的configs文件下。<br>推荐：<br>5.在sovits网页最下一行选择独立目录模式，把所有的模型文件、模型配置文件、扩散模型、扩散模型配置文件等，放在sovits的models文件中（注意要有方便记忆的模型名字，可以有中文，不然很多模型记不住的）</p>
 <p>6.可以打开sovits进行换声了</p>
-<h2 id="2-GPT"><a href="#2-GPT" class="headerlink" title="2.GPT"></a>2.GPT</h2><p>这里提供两个免费的GPT网站：</p>
+<h1 id="2-GPT"><a href="#2-GPT" class="headerlink" title="2.GPT"></a>2.GPT</h1><p>这里提供两个免费的GPT网站：</p>
 <p><a href="https://yiyan.baidu.com/">文心一言 (baidu.com)</a></p>
 <p><a href="https://www.doubao.com/chat/39821039323906">豆包 - 抖音旗下 AI 智能助手 (doubao.com)</a></p>
-<h2 id="3-文生图"><a href="#3-文生图" class="headerlink" title="3.文生图"></a>3.文生图</h2><p>网站：[SDXL Turbo 和 Stable Diffusion 3 免费在线生成器](<a href="https://sdxlturbo.ai/zh-CN/app?prompt=black">https://sdxlturbo.ai/zh-CN/app?prompt=black</a> flower)</p>
+<h1 id="3-文生图"><a href="#3-文生图" class="headerlink" title="3.文生图"></a>3.文生图</h1><p>网站：[SDXL Turbo 和 Stable Diffusion 3 免费在线生成器](<a href="https://sdxlturbo.ai/zh-CN/app?prompt=black">https://sdxlturbo.ai/zh-CN/app?prompt=black</a> flower)</p>
 <h3 id="Stable-Diffusion使用"><a href="#Stable-Diffusion使用" class="headerlink" title="Stable Diffusion使用"></a>Stable Diffusion使用</h3><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p><img src="https://docs.stablediffusion.cn/upload/image/20240204/1707056536878137.png"></p>
 <p>①首先我们输入的提示词（prompt）会首先进入TE（TextEncoder），而clip就是stable diffusion所使用的TE。TE这部分的作用就是把tag转化成U-net网络能理解的embedding形式，当然了，我们平时用的emb模型，就是一种自然语言很难表达的promot。（简单的说就是将“人话”转换成AI能够理解的语言）</p>
 <p>②将“人话”转换成AI能够理解的语言之后，U-net会对随机种子生成的噪声图进行引导，来指导去噪的方向，找出需要改变的地方并给出改变的数据。我们之前所设置的steps数值就是去噪的次数，所选择的采样器、CFG等参数也是在这个阶段起作用的。（简单的说就是U-net死盯着乱码图片，看他像什么，并给出更改的建议，使得图像更加想这个东西）</p>
@@ -1712,6 +1714,7 @@
 <p>然后在ps里面打开插件即可。</p>
 <h1 id="4-VideoRemover"><a href="#4-VideoRemover" class="headerlink" title="4.VideoRemover"></a>4.VideoRemover</h1><p>AI给视频去字幕</p>
 <p>详情查看videoremover.md,或者站内搜索Videoremover。</p>
+<h1 id="5-AI换脸"><a href="#5-AI换脸" class="headerlink" title="5.AI换脸"></a>5.AI换脸</h1><p>抖音AI工具进行换脸即可，傻瓜式操作</p>
 ]]></content>
       <categories>
         <category>AI</category>
@@ -3546,7 +3549,8 @@
   <entry>
     <title>Unity3D笔记</title>
     <url>/2024/06/15/Unity3D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Unity3D笔记"><a href="#Unity3D笔记" class="headerlink" title="Unity3D笔记"></a>Unity3D笔记</h1><h2 id="1-如何优化move手感"><a href="#1-如何优化move手感" class="headerlink" title="1.如何优化move手感"></a>1.如何优化move手感</h2><p>区别在于：Input.GetAxis和Input.GetAxisRaw两个函数的返回值不一样，</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Unity3D笔记"><a href="#Unity3D笔记" class="headerlink" title="Unity3D笔记"></a>Unity3D笔记</h1><p>有许多bug解决过程，由于精力不够，有空再写了。</p>
+<h2 id="1-如何优化move手感"><a href="#1-如何优化move手感" class="headerlink" title="1.如何优化move手感"></a>1.如何优化move手感</h2><p>区别在于：Input.GetAxis和Input.GetAxisRaw两个函数的返回值不一样，</p>
 <p>Input.GetAxis：返回值 -1~1</p>
 <p>Input.GetAxisRaw：返回值 -1，0，1</p>
 <ul>
@@ -3554,10 +3558,94 @@
 <li><strong>即时反馈</strong>: 如果你需要即按即得的响应，那么 <code>Input.GetAxisRaw</code> 是更好的选择。</li>
 </ul>
 <p>总的来说，<code>Input.GetAxisRaw</code> 提供了更加直接和即时的输入数据，适用于需要快速和精确响应的场景，而 <code>Input.GetAxis</code> 则因其平滑处理在某些情况下更适合提供较好的用户体验。</p>
+<pre><code>    private void Move()
+    &#123;   
+        //anim.SetFloat(&quot;speed&quot;, Mathf.Abs(moveX));//Mathf.Abs取绝对值
+    moveX = Input.GetAxis(&quot;Horizontal&quot;);
+
+    rb.velocity = new Vector2(moveX * playerSpeed, rb.velocity.y);
+    if(facingRight==false&amp;&amp;moveX&gt;0)
+        Flip();
+    if(facingRight==true&amp;&amp;moveX&lt;0)
+        Flip();
+&#125;
+</code></pre>
 <h2 id="2-如何优化跳跃手感"><a href="#2-如何优化跳跃手感" class="headerlink" title="2.如何优化跳跃手感"></a>2.如何优化跳跃手感</h2><p>参考马里奥的跳跃，在人物跳跃上行的时候和下行的时候给人物的刚体添加力的作用，无论是增加重力、减少重力还是使用Addforce函数都可以。</p>
 <p>用于对rigidbody组件对象添加力的作用。<br>其参数决定了添加力的作用方式，因此参数不同，其获得的效果（动量、动能）也不同。<br>另外unity重力加速度默认为9.81左右，随着物体的状况会有改变。</p>
+<pre><code>     public float fallAddition=3f;//下落重力加成
+    public float jumpAddition=0f;//跳跃重力加成
+     -----------------------------------------------------------------------------
+     if (rb.velocity.y &lt; -0.1f)
+        &#123;
+            rb.gravityScale = fallAddition;
+        &#125;
+        else if (rb.velocity.y &gt; 0.1f &amp;&amp; jumpHold)
+        &#123;
+            rb.gravityScale = jumpAddition;
+            &#125;
+    else if(rb.velocity.y &gt; 0.1f &amp;&amp; !isJump)
+        rb.gravityScale = 1f;
+</code></pre>
 <h2 id="3-Unity-PS"><a href="#3-Unity-PS" class="headerlink" title="3.Unity+PS"></a>3.Unity+PS</h2><p>可以用ps制作游戏内的资源图片导入Unity里面就行。具体步骤和问题如下：</p>
-]]></content>
+<p>1.Ps使用取色器取色，然后设置空白图层，比如32*32的，然后用画笔设计自己需要的图案，最后导出到Assets文件下。</p>
+<p>2.同样的，可以在网上找一些扣好的图（最好自己设计了）导入，加入刚体组件等等，</p>
+<p>3.最后记得添加到对应的图层、添加相应的组件、父类。</p>
+<h2 id="4-panel画布不显示在game窗口"><a href="#4-panel画布不显示在game窗口" class="headerlink" title="4.panel画布不显示在game窗口"></a>4.panel画布不显示在game窗口</h2><p>1.画布的layout是否和相机在同一个layout上，</p>
+<p>2.可能是放置文字的位置被其他物品挡住了，用Unity3D的3D视角查看panel位置上是否有物品遮挡。</p>
+<h2 id="5-多个动画使用enum进行优化"><a href="#5-多个动画使用enum进行优化" class="headerlink" title="5.多个动画使用enum进行优化"></a>5.多个动画使用enum进行优化</h2><p>主要思路：比如跑、跳、下坠、静止的四个动画在写在enum中，使用int类型的state标签好动画，在各个状态中自由更换动画，记得取消动画必须播放完这个选项。</p>
+<p>还有一个好处，添加其他动画的时候也能在enum中直接添加。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private enum playerState &#123; Idle, Run, Jump, Fall ,DoubleJump&#125;;//枚举所有的角色状态</span><br><span class="line"></span><br><span class="line">void playerAnim()</span><br><span class="line">   &#123;</span><br><span class="line">       playerState states;</span><br><span class="line">       if (Mathf.Abs(moveX) &gt; 0.1f)</span><br><span class="line">       &#123;</span><br><span class="line">           states=playerState.Run;</span><br><span class="line">       &#125;</span><br><span class="line">       else</span><br><span class="line">       &#123;</span><br><span class="line">           states = playerState.Idle;</span><br><span class="line">       &#125;</span><br><span class="line">       if(rb.velocity.y &gt; 0.1f)</span><br><span class="line">       &#123;</span><br><span class="line">           states=playerState.Jump;</span><br><span class="line">       &#125;</span><br><span class="line">       else if(rb.velocity.y &lt; -0.1f)</span><br><span class="line">       &#123;</span><br><span class="line">           states=playerState.Fall;</span><br><span class="line">       &#125;</span><br><span class="line">       if (moveJump||jumpHold&amp;&amp;rb.velocity.y!=0&amp;&amp;jumpCount&lt;1)</span><br><span class="line">       &#123;</span><br><span class="line">           states = playerState.DoubleJump;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       anim.SetInteger(&quot;state&quot;, (int)states);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-根据layout图层查找这个图层有多少个物品"><a href="#6-根据layout图层查找这个图层有多少个物品" class="headerlink" title="6.根据layout图层查找这个图层有多少个物品"></a>6.根据layout图层查找这个图层有多少个物品</h2><p>比如根据这个查找boss数量，boss<code>具有</code>Empty<code>图层，你可以通过遍历场景中的所有游戏对象，检查它们是否具有附加在</code>Empty<code>图层上的特定组件或属性，来确定</code>boss&#96;的数量。</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="built_in">int</span> <span class="title">Countboss</span>()<span class="comment">//计算场景中在 empty 图层上的 boss 数量</span></span></span><br><span class="line">    &#123;</span><br><span class="line">        </span><br><span class="line">            <span class="built_in">int</span> bossCount = <span class="number">0</span>;</span><br><span class="line">            GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType&lt;GameObject&gt;();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">foreach</span> (GameObject obj <span class="keyword">in</span> allObjects)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">// 检查对象是否具有 BossComponent 组件并且在 Empty 图层上</span></span><br><span class="line">                <span class="keyword">if</span> ( obj.layer == LayerMask.NameToLayer(<span class="string">&quot;enemy&quot;</span>))</span><br><span class="line">                &#123;</span><br><span class="line">                    bossCount++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> bossCount;</span><br><span class="line">            </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">Enemy</span>()<span class="comment">//敌人</span></span></span><br><span class="line">    &#123;</span><br><span class="line">        Collider2D enemy =Physics2D.OverlapCircle(killPoint.position, <span class="number">0.2f</span>,LayerMask.GetMask(<span class="string">&quot;enemy&quot;</span>));<span class="comment">//原点位置，半径，碰撞层</span></span><br><span class="line">        <span class="keyword">if</span> (enemy == <span class="literal">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Destroy(enemy.gameObject);</span><br><span class="line"></span><br><span class="line">        rb.velocity = <span class="keyword">new</span> Vector2(rb.velocity.x, <span class="number">0f</span>);</span><br><span class="line">        rb.AddForce(<span class="keyword">new</span> Vector2(<span class="number">0f</span>, <span class="number">200f</span>));<span class="comment">//弹起</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-跳跃敌人头部弹起，优化手感"><a href="#7-跳跃敌人头部弹起，优化手感" class="headerlink" title="7.跳跃敌人头部弹起，优化手感"></a>7.跳跃敌人头部弹起，优化手感</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private void Enemy()//敌人</span><br><span class="line">    &#123;</span><br><span class="line">        Collider2D enemy =Physics2D.OverlapCircle(killPoint.position, 0.2f,LayerMask.GetMask(&quot;enemy&quot;));//原点位置，半径，碰撞层</span><br><span class="line">        if (enemy == null)</span><br><span class="line">        &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        	Destroy(enemy.gameObject);</span><br><span class="line">            rb.velocity = new Vector2(rb.velocity.x, 0f);</span><br><span class="line">    		rb.AddForce(new Vector2(0f, 200f));//弹起</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="8-切换不同场景-传送门"><a href="#8-切换不同场景-传送门" class="headerlink" title="8.切换不同场景&#x2F;传送门"></a>8.切换不同场景&#x2F;传送门</h2><p>1.要贴图，添加图层，触发器√</p>
+<p>2.部分代码实现，door和人物player接触既可触发场景切换和音乐暂停等。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">private void OnTriggerEnter2D(Collider2D collision)</span><br><span class="line">    &#123;</span><br><span class="line">        if (collision.gameObject.tag == &quot;player&quot;)</span><br><span class="line">        &#123;</span><br><span class="line">            finishSund.Play();</span><br><span class="line">            Invoke(&quot;FinishS1&quot;, 1f);//一秒后切换场景</span><br><span class="line">            Debug.Log(&quot;Door&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">private void FinishS1()//切换场景</span><br><span class="line">    &#123;</span><br><span class="line">        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);</span><br><span class="line">        SaveData()；</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-相机跟随人物"><a href="#9-相机跟随人物" class="headerlink" title="9.相机跟随人物"></a>9.相机跟随人物</h2><p>下载Unity的扩展Virtual Camera，导入场景后，可以根据自己喜欢设置跟随速度和跟随方式。</p>
+<p>另外游戏背景音乐什么的，可以添加到相机中，方便管理。</p>
+<h2 id="10-不同场景数据互通"><a href="#10-不同场景数据互通" class="headerlink" title="10.不同场景数据互通"></a>10.不同场景数据互通</h2><p>使用静态类型数据。</p>
+<pre><code>public class Globalint : MonoBehaviour
+&#123;
+public static Globalint Instance;
+
+//要保存使用的数据;
+public int HP=100;
+public int POWER= 10;
+public int Bananas=0;
+
+//初始化
+private void Awake()
+ &#123;
+    if (Instance == null)
+    &#123;
+        DontDestroyOnLoad(gameObject);
+        Instance = this;
+    &#125;
+    else if (Instance != null)
+    &#123;
+        Destroy(gameObject);
+    &#125;
+ &#125;
+｝
+</code></pre>
+<h2 id="11-game窗口的粒子特效问题"><a href="#11-game窗口的粒子特效问题" class="headerlink" title="11.game窗口的粒子特效问题"></a>11.game窗口的粒子特效问题</h2><p>主要是Unity的粒子特效组件的设置问题，比如layout范围、粒子发散方向、粒子数量、布局范围，这个布局范围有好几个要设置成“世界”，否则可能会在game窗口看不见你的粒子特效。主要还是下面三个问题：</p>
+<ol>
+<li><strong>未正确添加或设置 <code>Particle</code> 组件</strong>：确保在人物的游戏对象上正确添加了 <code>Particle System</code> 组件。可以通过选择人物对象，在 Inspector 面板中查看是否有该组件存在，并检查其相关参数设置是否符合预期。</li>
+<li>缺少触发调用的条件或事件：粒子系统的播放通常需要通过某种条件或事件来触发。检查是否在适当的时机（例如特定的游戏逻辑、动画事件、输入操作等）触发了粒子系统的播放。可以在相关的脚本中添加代码来调用粒子系统的播放方法，例如 <code>ParticleSystem.Play()</code> 。</li>
+<li>脚本中的引用问题：如果通过脚本控制粒子系统，确保在脚本中正确获取了人物对象上的 <code>Particle</code> 组件的引用。</li>
+</ol>
+<h2 id="12-地面检测失败"><a href="#12-地面检测失败" class="headerlink" title="12.地面检测失败"></a>12.地面检测失败</h2><p>主要是layout布局是否正确，以及是否勾选trigger（触发器）等设置，代码方面一般都不会有问题。</p>
+<h2 id="13"><a href="#13" class="headerlink" title="13."></a>13.</h2>]]></content>
       <categories>
         <category>C#</category>
         <category>Unity3D</category>
