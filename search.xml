@@ -1004,7 +1004,12 @@
 
 
 <h2 id="从github克隆到本地"><a href="#从github克隆到本地" class="headerlink" title="从github克隆到本地"></a>从github克隆到本地</h2><p><code>git clone</code> [地址或者项目的ssh]就好了。</p>
-<h2 id="远程分支操作"><a href="#远程分支操作" class="headerlink" title="远程分支操作"></a>远程分支操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin是远程仓库的别名，我这里用repo代替了。</span><br><span class="line"></span><br><span class="line">git branch -r //查看远程分支列表</span><br><span class="line"></span><br><span class="line">git branch apple //创建分支apple，现在这个分支还在本地</span><br><span class="line"></span><br><span class="line">git push repo apple //push这个apple分支到远程仓库repo上</span><br><span class="line"></span><br><span class="line">git branch --set-upstream-to=repo/apple apple //将repo仓库的远程分支apple和本地分支apple关联</span><br><span class="line"></span><br><span class="line">git push repo --delete apple  //将远程仓库repo的apple分支删除。 </span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+<h2 id="远程分支操作"><a href="#远程分支操作" class="headerlink" title="远程分支操作"></a>远程分支操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">origin是远程仓库的别名，我这里用repo代替了。</span><br><span class="line"></span><br><span class="line">git branch -r //查看远程分支列表</span><br><span class="line"></span><br><span class="line">git branch apple //创建分支apple，现在这个分支还在本地</span><br><span class="line"></span><br><span class="line">git push repo apple //push这个apple分支到远程仓库repo上</span><br><span class="line"></span><br><span class="line">git branch --set-upstream-to=repo/apple apple //将repo仓库的远程分支apple和本地分支apple关联</span><br><span class="line"></span><br><span class="line">git push repo --delete apple  //将远程仓库repo的apple分支删除。 </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="git大文件上传"><a href="#git大文件上传" class="headerlink" title="git大文件上传"></a>git大文件上传</h2><p>需要 装Git LFS到git&#x2F;bin目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git init #创建本地仓库环境</span><br><span class="line">git lfs install #安装大文件上传应用</span><br><span class="line">git lfs track * #追踪要上传的大文件，*表示路径下的所有文件</span><br><span class="line">git add .gitattributes #添加先上传的属性文件(要先上传属性文件，不然有可能失败)</span><br><span class="line">git commit -m &quot;pre&quot; #添加属性文件上传的说明</span><br><span class="line">git remote add origin https://github.com/Youpeng-Zhang/MOP.git #建立本地和Github仓库的链接</span><br><span class="line">git push origin master #上传属性文件</span><br><span class="line">git add * #添加要上传的大文件，*表示路径下的所有文件</span><br><span class="line">git commit -m &quot;Git LFS commit&quot; #添加大文件上传的说明</span><br><span class="line">git push origin master #上传大文件</span><br></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
         <category>git</category>
         <category>github</category>
@@ -3550,6 +3555,7 @@
     <title>Unity3D笔记</title>
     <url>/2024/06/15/Unity3D/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Unity3D笔记"><a href="#Unity3D笔记" class="headerlink" title="Unity3D笔记"></a>Unity3D笔记</h1><p>有许多bug解决过程，由于精力不够，有空再写了。</p>
+<p>个人2D小游戏演示视频：<a href="https://www.bilibili.com/video/BV1YahveoEgS/?spm_id_from=333.999.top_right_bar_window_dynamic.content.click&vd_source=c3c474de41290d1ca95c9b0c44da623c">Unity-2D小游戏设计_哔哩哔哩bilibili</a></p>
 <h2 id="1-如何优化move手感"><a href="#1-如何优化move手感" class="headerlink" title="1.如何优化move手感"></a>1.如何优化move手感</h2><p>区别在于：Input.GetAxis和Input.GetAxisRaw两个函数的返回值不一样，</p>
 <p>Input.GetAxis：返回值 -1~1</p>
 <p>Input.GetAxisRaw：返回值 -1，0，1</p>
